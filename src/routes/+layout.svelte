@@ -3,6 +3,7 @@
 	import Nav from './Nav.svelte';
 	import { browser } from '$app/environment';
 	import PageTransition from '$lib/components/PageTransition.svelte';
+	import Footer from './Footer.svelte';
 
 	if (browser) {
 		if (
@@ -23,3 +24,4 @@
 	<slot />
 </PageTransition>
 </div>
+<Footer/>

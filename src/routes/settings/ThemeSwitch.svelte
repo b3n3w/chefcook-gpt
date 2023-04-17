@@ -1,0 +1,22 @@
+<script lang="ts">
+	let darkMode = true;
+
+	function handleSwitchDarkMode() {
+		darkMode = !darkMode;
+		localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+		darkMode
+			? document.documentElement.classList.add('dark')
+			: document.documentElement.classList.remove('dark');
+	}
+</script>
+
+<div class="flex flex-col items-center">
+	<button
+		class="px-4 dark:text-white rounded-lg border  {!darkMode
+            ? 'border-purple-500 border'
+            : ''}"
+		on:click={handleSwitchDarkMode}
+	>
+		{!darkMode ? 'Enable' : 'Disable'}
+	</button>
+</div>

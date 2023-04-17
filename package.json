@@ -40,15 +40,10 @@
 		"@iconify-json/icon-park": "^1.1.10",
 		"@iconify-json/mdi": "^1.1.50",
 		"@popperjs/core": "^2.11.7",
-		"chatgpt": "^5.2.2",
 		"classnames": "^2.3.2",
-		"dotenv": "^16.0.3",
 		"flowbite": "^1.6.4",
 		"flowbite-svelte": "^0.34.4",
 		"openai": "^3.2.1",
-		"readline-sync": "^1.4.10",
-		"svelte-navigator": "^3.2.2",
-		"svelte-router-spa": "^6.0.3",
-		"svelte-routing": "^1.6.0"
+		"readline-sync": "^1.4.10"
 	}
 }

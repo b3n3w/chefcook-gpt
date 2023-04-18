@@ -14,10 +14,12 @@ export const prompts: Prompt = {
 	english: {
 		meat: "Generate a tasty recipe with meat and -MAIN- as main ingredient. You can use the following ingredients: -INGREDIENTS-, but don't have to.",
 		fish: "Generate a tasty recipe with fish and -MAIN- as main ingredient. You can use the following ingredients: -INGREDIENTS-, but don't have to.",
+		veggie:
+			"Generate a tasty vegetarian recipe with -MAIN- as main ingredient. You can use the following ingredients: -INGREDIENTS-, but don't have to.",
 		vegan:
 			"Generate a tasty vegan recipe with -MAIN- as main ingredient. You can use the following ingredients: -INGREDIENTS-, but don't have to.",
 		without:
-			"Generate a tasty vegan recipe. You can use the following ingredients -INGREDIENTS-, but don't have to."
+			"Generate a tasty recipe. You can use the following ingredients -INGREDIENTS-, but don't have to."
 	},
 	german: {
 		meat: '',

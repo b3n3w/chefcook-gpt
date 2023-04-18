@@ -15,6 +15,7 @@
 	let veganSelect = false;
 	let fishSelect = false;
 	let meatSelect = false;
+	let veggieSelect = false;
 
 	let pastaSelect = false;
 	let riceSelect = false;
@@ -27,7 +28,15 @@
 		generating = true;
 
 		let main = pastaSelect ? 'pasta' : riceSelect ? 'rice' : '';
-		let type = meatSelect ? 'meat' : veganSelect ? 'vegan' : fishSelect ? 'fish' : 'without';
+		let type = meatSelect
+			? 'meat'
+			: veggieSelect
+			? 'veggie'
+			: veganSelect
+			? 'vegan'
+			: fishSelect
+			? 'fish'
+			: 'without';
 
 		let prompt = prompts.english[type];
 
@@ -38,6 +47,8 @@
 
 		prompt += prompts.instructions;
 
+		console.log(prompt);
+		
 		const { status, content } = await fetchRecipe($apikey, prompt);
 
 		if (status == 200) {
@@ -57,7 +68,12 @@
 	<div class="flex flex-wrap justify-center mt-5 font-thin dark:text-white">
 		<p class="uppercase text-lg sm:text-xl">Select what you love</p>
 	</div>
-	<Types bind:vegan={veganSelect} bind:fish={fishSelect} bind:meat={meatSelect} />
+	<Types
+		bind:vegan={veganSelect}
+		bind:veggie={veggieSelect}
+		bind:fish={fishSelect}
+		bind:meat={meatSelect}
+	/>
 	<div class="flex flex-wrap justify-center dark:text-white">
 		<p class="uppercase text-lg sm:text-xl font-thin">Select your main</p>
 	</div>

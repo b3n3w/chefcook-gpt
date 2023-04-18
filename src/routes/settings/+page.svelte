@@ -16,8 +16,6 @@
 	async function setApiKey() {
 		let response = await validateApiKey($apikey);
 		if (response == 200) {
-			console.log('tass');
-
 			validKey = true;
 			toLocalStorage(apikey, 'apikey');
 		} else {

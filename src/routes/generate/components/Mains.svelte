@@ -18,7 +18,7 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="flex flex-wrap space-x-4 py-8 sm:mb-8 justify-center select-none">
+<div class="flex flex-wrap space-x-4 py-5 sm:py-8 sm:mb-8 justify-center select-none">
 	<div
 		class="dark:text-white hover:shadow-sm hover:shadow-orange-200 border-2 w-1/5 sm:w-1/12 h-24 sm:h-32 rounded-xl {pasta
 			? 'border-orange-400 border-3'

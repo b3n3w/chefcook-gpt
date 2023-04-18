@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { validateApiKey } from '$lib/api';
+	import { validateApiKey } from '$lib/openai-api';
 	import { apikey, toLocalStorage } from '$lib/shared/stores/general';
 	import { onMount } from 'svelte';
 	import ThemeSwitch from './ThemeSwitch.svelte';

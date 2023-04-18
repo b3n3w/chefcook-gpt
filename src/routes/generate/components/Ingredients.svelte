@@ -2,7 +2,6 @@
 	import type { Ingredient } from '$lib/interface/Ingredient';
 	import { fade, fly } from 'svelte/transition';
 	import Recommendation from './Recommendation.svelte';
-	import { fetchIngredient } from '$lib/food-api';
 	import IngredientList from './IngredientList.svelte';
 
 	export let ingredients: Ingredient[] = [];
@@ -30,6 +29,11 @@
 		ingredients = [...ingredients, { ingredientName: ingredient, count: 0 }];
 		data = [];
 	}
+
+	async function fetchIng() {
+		let response = await fetch(`/api/ingredients?input=${next}`);
+		data = await response.json();
+	}
 </script>
 
 <div class="w-1/2 mx-auto flex item-center justify-center flex-col">
@@ -53,7 +57,7 @@
 		<form on:submit|preventDefault={addFromInput}>
 			<input
 				bind:value={next}
-				on:input={async () => (data = await fetchIngredient(next))}
+				on:input={fetchIng}
 				list="ingredients"
 				class="border justify-center border-gray-200 dark:text-white dark:bg-slate-800 text-sm focus:ring-orange-400 focus:border-orange-400 rounded-xl"
 				type="text"

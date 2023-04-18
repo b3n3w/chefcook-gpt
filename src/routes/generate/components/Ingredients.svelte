@@ -6,6 +6,7 @@
 	export let ingredients: Ingredient[] = [];
 	let recommendations: string[] = ['Onion', 'Cheese', 'Tofu', 'Zucchini', 'Paprika'];
 
+	let dynamicList: string[] = [];
 	let next: string = '';
 	let did_remove = true;
 
@@ -22,6 +23,26 @@
 	function addFromReccomendation(ingredient: string, index: number) {
 		ingredients = [...ingredients, { ingredientName: ingredient, count: 0 }];
 		recommendations = [...recommendations.slice(0, index), ...recommendations.slice(index + 1)];
+	}
+
+	function addFromList(ingredient: string) {
+		ingredients = [...ingredients, { ingredientName: ingredient, count: 0 }];
+		dynamicList = [];
+		next = '';
+	}
+
+	async function fetchIng(event: any) {
+		// Check if key is backspace
+		if (event.inputType == 'deleteContentBackward') {
+			if (next === '' || next.length < 3) dynamicList = [];
+		} else {
+			try {
+				let response = await fetch(`/api/ingredients?input=${next}`);
+				dynamicList = await response.json();
+			} catch (error) {
+				// Handle the error here if needed
+			}
+		}
 	}
 </script>
 
@@ -45,16 +66,35 @@
 	<div class="flex flex-wrap justify-center">
 		<form on:submit|preventDefault={addFromInput}>
 			<input
-				max="4"
 				bind:value={next}
-				list="ingredients"
+				on:input={(event) => {
+					fetchIng(event);
+				}}
 				class="border justify-center border-gray-200 dark:text-white dark:bg-slate-800 text-sm focus:ring-orange-400 focus:border-orange-400 rounded-xl"
 				type="text"
 				placeholder="Enter to add"
 			/>
+			{#if dynamicList.length > 0}
+				<ul
+					in:fade={{ delay: 100 }}
+					out:fade={{ delay: 100 }}
+					class="absolute z-50 bg-white/90 rounded-xl"
+				>
+					{#each dynamicList as ingredient}
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<li
+							class="border-b border-gray-300 py-2 px-4 w-full cursor-pointer dark:bg-slate-300 hover:bg-orange-400/80 rounded-sm hover:text-white active:text-white"
+							on:click={addFromList(ingredient)}
+							style="width: 100%; text-align: center;"
+						>
+							{@html ingredient}
+						</li>
+					{/each}
+				</ul>
+			{/if}
 		</form>
 	</div>
-	<div class="justify-center">
+	<div class="justify-center" style="position: relative;">
 		{#each ingredients as ingredient, i (ingredient)}
 			<div
 				class="flex mt-3 h-8 sm:h-11 w-full justify-centerbg-slate-300/30 rounded-xl dark:text-white dark:border-white"

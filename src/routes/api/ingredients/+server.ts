@@ -4,8 +4,6 @@ import { RAPID_API_KEY } from '$env/static/private';
 export const GET: RequestHandler = async ({ url }) => {
 
     const input = url.searchParams.get('input')
-    console.log(input);
-
     const endpoint = `https://edamam-food-and-grocery-database.p.rapidapi.com/auto-complete?q=${input}`;
 
     const options = {
@@ -23,5 +21,5 @@ export const GET: RequestHandler = async ({ url }) => {
         });
     });
 
-    return new Response(JSON.stringify(ingredients), { status: 200 })
+    return new Response(JSON.stringify(ingredients.slice(0, 5)), { status: 200 })
 }

@@ -35,10 +35,13 @@
 		// Check if key is backspace
 		if (event.inputType == 'deleteContentBackward') {
 			if (next === '' || next.length < 3) dynamicList = [];
-			
 		} else {
-			let response = await fetch(`/api/ingredients?input=${next}`);
-			dynamicList = await response.json();
+			try {
+				let response = await fetch(`/api/ingredients?input=${next}`);
+				dynamicList = await response.json();
+			} catch (error) {
+				// Handle the error here if needed
+			}
 		}
 	}
 </script>

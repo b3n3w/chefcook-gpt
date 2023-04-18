@@ -2,10 +2,12 @@
 	import type { Ingredient } from '$lib/interface/Ingredient';
 	import { fade, fly } from 'svelte/transition';
 	import Recommendation from './Recommendation.svelte';
+	import { fetchIngredient } from '$lib/food-api';
+	import IngredientList from './IngredientList.svelte';
 
 	export let ingredients: Ingredient[] = [];
 	let recommendations: string[] = ['Onion', 'Cheese', 'Tofu', 'Zucchini', 'Paprika'];
-
+	let data: string[] = [];
 	let next: string = '';
 	let did_remove = true;
 
@@ -22,6 +24,11 @@
 	function addFromReccomendation(ingredient: string, index: number) {
 		ingredients = [...ingredients, { ingredientName: ingredient, count: 0 }];
 		recommendations = [...recommendations.slice(0, index), ...recommendations.slice(index + 1)];
+	}
+
+	function addFromList(ingredient: string) {
+		ingredients = [...ingredients, { ingredientName: ingredient, count: 0 }];
+		data = [];
 	}
 </script>
 
@@ -45,13 +52,25 @@
 	<div class="flex flex-wrap justify-center">
 		<form on:submit|preventDefault={addFromInput}>
 			<input
-				max="4"
 				bind:value={next}
+				on:input={async () => (data = await fetchIngredient(next))}
 				list="ingredients"
 				class="border justify-center border-gray-200 dark:text-white dark:bg-slate-800 text-sm focus:ring-orange-400 focus:border-orange-400 rounded-xl"
 				type="text"
 				placeholder="Enter to add"
 			/>
+			{#if data.length > 0}
+				<ul id="autocomplete-items-list">
+					{#each data as ingredient, i}
+						<IngredientList
+							on:addFromList={() => {
+								addFromList(ingredient);
+							}}
+							itemLabel={ingredient}
+						/>
+					{/each}
+				</ul>
+			{/if}
 		</form>
 	</div>
 	<div class="justify-center">

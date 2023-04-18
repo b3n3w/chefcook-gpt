@@ -7,7 +7,7 @@
 	import Mains from './components/Mains.svelte';
 	import Ingredients from './components/Ingredients.svelte';
 
-	import { fetchRecipe } from '$lib/api';
+	import { fetchRecipe } from '$lib/openai-api';
 	import { apikey, saveRecipe } from '$lib/shared/stores/general';
 	import { ingredientsStore } from '$lib/shared/stores/general';
 	import { prompts } from '$lib/prompts';

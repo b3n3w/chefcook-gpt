@@ -13,6 +13,7 @@
 	const addFromInput = () => {
 		if (next) ingredients = [...ingredients, { ingredientName: next, count: 0 }];
 		next = '';
+		dynamicList = [];
 	};
 
 	const remove = (i: number) => {
@@ -44,6 +45,15 @@
 			}
 		}
 	}
+
+	function handleClickOutside(event) {
+		const list = document.querySelector('ul');
+		if (list && !list.contains(event.target)) {
+			dynamicList = [];
+		}
+	}
+
+	window.addEventListener('click', handleClickOutside);
 </script>
 
 <div class="w-1/2 mx-auto flex item-center justify-center flex-col">
@@ -75,15 +85,12 @@
 				placeholder="Enter to add"
 			/>
 			{#if dynamicList.length > 0}
-				<ul
-					in:fade={{ delay: 100 }}
-					out:fade={{ delay: 100 }}
-					class="absolute z-50 bg-white/90 rounded-xl"
-				>
-					{#each dynamicList as ingredient}
+				<ul class="absolute z-50 pt-2 rounded-xl">
+					{#each dynamicList as ingredient, i}
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<li
-							class="border-b border-gray-300 py-2 px-4 w-full cursor-pointer dark:bg-slate-300 hover:bg-orange-400/80 rounded-sm hover:text-white active:text-white"
+							in:fly={{ y: 10, delay: (i + 1) * 60 }}
+							class="text-slate-700 py-2 px-4 w-full cursor-pointer bg-white hover:bg-orange-400/90 rounded-xl hover:text-white pt-0.5"
 							on:click={addFromList(ingredient)}
 							style="width: 100%; text-align: center;"
 						>
@@ -104,7 +111,7 @@
 				>
 					{i + 1}
 				</div>
-				<div class="flex-1 py-1">
+				<div class="flex-1 py-1" style="display: flex; align-items: center;">
 					<div class="font-bold">{ingredient.ingredientName}</div>
 				</div>
 				<button class="flex-shrink-0 p-1 pr-2" on:click={() => remove(i)}>

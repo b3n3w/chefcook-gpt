@@ -12,9 +12,7 @@
 
 <div class="flex flex-col items-center">
 	<button
-		class="px-4 dark:text-white rounded-lg border  {!darkMode
-            ? 'border-purple-500 border'
-            : ''}"
+		class="px-4 dark:text-white rounded-lg border {!darkMode ? 'border-purple-500 border' : ''}"
 		on:click={handleSwitchDarkMode}
 	>
 		{!darkMode ? 'Enable' : 'Disable'}

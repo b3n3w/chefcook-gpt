@@ -10,7 +10,6 @@ Check [Demo](https://recipes-gpt.xyz)!
 
 <img src="demo.png" alt="Demo Overview" width="500" >
 
-
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` , start a development server:

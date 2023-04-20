@@ -16,7 +16,7 @@
 		{#each $recipesStore as recipe, i}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div
-				class="relative bg-white border-2 border-oraange-400  rounded-lg hover:shadow-md dark:shadow-slate-50/40 shadow-neutral-100 p-4 m-4 mb-4 lg:w-96 transition delay-{(i +
+				class="relative bg-white border-2 border-oraange-400 rounded-lg hover:shadow-md dark:shadow-slate-50/40 shadow-neutral-100 p-4 m-4 mb-4 lg:w-96 transition delay-{(i +
 					1) *
 					200}"
 			>

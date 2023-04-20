@@ -20,8 +20,8 @@
 <Nav />
 
 <div style="height: 100vh; overflow-y: auto;">
-<PageTransition>
-	<slot />
-</PageTransition>
+	<PageTransition>
+		<slot />
+	</PageTransition>
 </div>
-<Footer/>
+<Footer />

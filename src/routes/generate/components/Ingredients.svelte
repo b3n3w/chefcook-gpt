@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Ingredient } from '$lib/interface/Ingredient';
 	import { onMount } from 'svelte';
-	
+
 	import { fade, fly } from 'svelte/transition';
 	import Recommendation from './Recommendation.svelte';
 

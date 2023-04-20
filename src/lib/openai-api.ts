@@ -36,16 +36,15 @@ export async function fetchRecipe(prompt: string) {
 }
 
 export async function validateApiKey(apiKey: string): Promise<Boolean> {
-
 	const configuration = new Configuration({
-		apiKey: apiKey,
+		apiKey: apiKey
 	});
 
 	const openai = new OpenAIApi(configuration);
 	try {
-		await openai.retrieveModel("text-davinci-003");
-		return true
+		await openai.retrieveModel('text-davinci-003');
+		return true;
 	} catch (error: any) {
-		return false
+		return false;
 	}
 }

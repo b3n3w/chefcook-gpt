@@ -1,12 +1,10 @@
 <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
-	<div
-		class="w-full mx-auto max-w-screen-xl p-4 flex items-center justify-between "
-	>
+	<div class="w-full mx-auto max-w-screen-xl p-4 flex items-center justify-between">
 		<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
 			© 2023 <a href="https://recipes-gpt.xyz" class="hover:underline items-center">RecipeGPT</a>
 		</span>
 
-		<a href="https://github.com/b3n3w/chefcook-gpt" class="ml-2 items-center  dark:text-white">
+		<a href="https://github.com/b3n3w/chefcook-gpt" class="ml-2 items-center dark:text-white">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-5 w-5"

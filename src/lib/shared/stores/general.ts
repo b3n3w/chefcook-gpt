@@ -62,7 +62,7 @@ export function removeRecipe(mealname: string) {
     }
 }
 
-export const apikey = writable(fromLocalStorage('apikey', ''))
+export const apikeyStore = writable(fromLocalStorage('apikey', ''))
 export const recipesStore = writable(fromLocalStorage('recipes', []))
 export const recipeStore = writable<Recipe>()
 export const ingredientsStore = writable<Ingredient[]>()

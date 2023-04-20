@@ -8,7 +8,7 @@
 	import Ingredients from './components/Ingredients.svelte';
 
 	import { fetchRecipe } from '$lib/openai-api';
-	import { apikey, saveRecipe } from '$lib/shared/stores/general';
+	import { saveRecipe } from '$lib/shared/stores/general';
 	import { ingredientsStore } from '$lib/shared/stores/general';
 	import { prompts } from '$lib/prompts';
 
@@ -47,9 +47,7 @@
 
 		prompt += prompts.instructions;
 
-		console.log(prompt);
-		
-		const { status, content } = await fetchRecipe($apikey, prompt);
+		const { status, content } = await fetchRecipe(prompt);
 
 		if (status == 200) {
 			validAPI = true;

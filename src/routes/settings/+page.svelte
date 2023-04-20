@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { validateApiKey } from '$lib/openai-api';
-	import { apikey, toLocalStorage } from '$lib/shared/stores/general';
+	import { apikeyStore, toLocalStorage } from '$lib/shared/stores/general';
 	import { onMount } from 'svelte';
 	import ThemeSwitch from './ThemeSwitch.svelte';
 
@@ -8,16 +8,16 @@
 	let hasApiKey: boolean = false;
 
 	onMount(() => {
-		if ($apikey) {
+		if ($apikeyStore) {
 			hasApiKey = true;
 		}
 	});
 
 	async function setApiKey() {
-		let response = await validateApiKey($apikey);
-		if (response == 200) {
+		let isValid = await validateApiKey($apikeyStore);
+		if (isValid) {
 			validKey = true;
-			toLocalStorage(apikey, 'apikey');
+			toLocalStorage(apikeyStore, 'apikey');
 		} else {
 			hasApiKey = false;
 			validKey = false;
@@ -43,7 +43,7 @@
 				class="border justify-center border-green-500 dark:text-white dark:bg-slate-800 text-sm focus:ring-orange-400 focus:border-orange-400 rounded-xl w-full h-10"
 				type="password"
 				placeholder="Api Key"
-				bind:value={$apikey}
+				bind:value={$apikeyStore}
 			/>
 			<button
 				class="ml-2 px-4 py-2 border border-green-500 dark:border-0 rounded-xl bg-slate-400/50 transition ease-in-out text-gray-700 dark:text-white font-medium h-10"
@@ -59,7 +59,7 @@
 					: ''}"
 				type="password"
 				placeholder={validKey ? 'Add API KEY' : 'No or invalid api-key!'}
-				bind:value={$apikey}
+				bind:value={$apikeyStore}
 			/>
 			<button
 				class="ml-2 px-4 py-2 border-green-500 border dark:border-0 rounded-xl bg-slate-400/60 text-gray-700 dark:text-white font-medium h-10 {!validKey

@@ -9,7 +9,7 @@
 	let recommendations: string[] = ['Onion', 'Cheese', 'Tofu', 'Zucchini', 'Paprika'];
 
 	let dynamicList: string[] = [];
-	let next: string = '';
+	let next = '';
 	let did_remove = true;
 
 	const addFromInput = () => {

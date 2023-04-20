@@ -35,7 +35,7 @@ export async function fetchRecipe(prompt: string) {
 	}
 }
 
-export async function validateApiKey(apiKey: string): Promise<Boolean> {
+export async function validateApiKey(apiKey: string): Promise<boolean> {
 	const configuration = new Configuration({
 		apiKey: apiKey
 	});

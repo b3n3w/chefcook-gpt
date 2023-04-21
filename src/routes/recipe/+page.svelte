@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import LL from '$lib/i18n/i18n-svelte';
+	import LL, { locale } from '$lib/i18n/i18n-svelte';
 	import type { Recipe } from '$lib/interface/Recipe';
 	import { recipeStore } from '$lib/shared/stores/general';
 
@@ -10,8 +10,12 @@
 	async function translateRecipe() {
 		const res = await fetch('/api/translate', {
 			method: 'POST',
-			body: JSON.stringify($recipeStore)
+			body: JSON.stringify({
+				transData: $recipeStore,
+				language: $locale
+			})
 		});
+
 		let translatedRecipe: Recipe = await res.json();
 		let recipe: Recipe = translatedRecipe;
 		recipeStore.set(recipe);
@@ -39,7 +43,9 @@
 			</svg>
 		</button>
 
-		<button class="text-lg font-semibold pt-2 " on:click={translateRecipe}> {$LL.recipe.translate()} </button>
+		<button class="text-lg font-semibold pt-2" on:click={translateRecipe}>
+			{$LL.recipe.translate()}
+		</button>
 		<div class="text-xl sm:text-2xl font-semibold mt-5 mb-5">{$recipeStore.mealname}</div>
 		<div class="text-xl text-semibold text-slate-500 mt-5 mb-5">{$recipeStore.estimated_time}</div>
 		<div class="text-lg text-semibold text-slate-800 m-5">{$recipeStore.description}</div>

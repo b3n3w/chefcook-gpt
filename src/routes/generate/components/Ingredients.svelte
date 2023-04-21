@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { Ingredient } from '$lib/interface/Ingredient';
+	import { onMount } from 'svelte';
+	
 	import { fade, fly } from 'svelte/transition';
 	import Recommendation from './Recommendation.svelte';
 
@@ -53,7 +55,12 @@
 		}
 	}
 
-	window.addEventListener('click', handleClickOutside);
+	onMount(() => {
+		// Check if running on the client-side
+		if (typeof window !== 'undefined') {
+			window.addEventListener('click', handleClickOutside);
+		}
+	});
 </script>
 
 <div class="w-1/2 mx-auto flex item-center justify-center flex-col">

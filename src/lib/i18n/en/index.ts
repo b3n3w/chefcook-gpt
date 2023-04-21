@@ -49,6 +49,11 @@ const en = {
 		header: "Your recipes",
 		noRecipes: "Currently you don't have any recipe 😰"
 	},
+	recipe: {
+		translate: "Translate",
+		ingredients: "Ingredients",
+		instructions: "Instructions"
+	},
 	settings: {
 		darkmode: {
 			header: "Darkmode",

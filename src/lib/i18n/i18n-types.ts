@@ -9,7 +9,10 @@ export type Locales =
 	| 'de'
 	| 'en'
 	| 'es'
+	| 'hu'
 	| 'it'
+	| 'pl'
+	| 'ru'
 
 export type Translation = RootTranslation
 
@@ -141,6 +144,20 @@ type RootTranslation = {
 		 * C​u​r​r​e​n​t​l​y​ ​y​o​u​ ​d​o​n​'​t​ ​h​a​v​e​ ​a​n​y​ ​r​e​c​i​p​e​ ​�​�
 		 */
 		noRecipes: string
+	}
+	recipe: {
+		/**
+		 * T​r​a​n​s​l​a​t​e
+		 */
+		translate: string
+		/**
+		 * I​n​g​r​e​d​i​e​n​t​s
+		 */
+		ingredients: string
+		/**
+		 * I​n​s​t​r​u​c​t​i​o​n​s
+		 */
+		instructions: string
 	}
 	settings: {
 		darkmode: {
@@ -310,6 +327,20 @@ export type TranslationFunctions = {
 		 * Currently you don't have any recipe 😰
 		 */
 		noRecipes: () => LocalizedString
+	}
+	recipe: {
+		/**
+		 * Translate
+		 */
+		translate: () => LocalizedString
+		/**
+		 * Ingredients
+		 */
+		ingredients: () => LocalizedString
+		/**
+		 * Instructions
+		 */
+		instructions: () => LocalizedString
 	}
 	settings: {
 		darkmode: {

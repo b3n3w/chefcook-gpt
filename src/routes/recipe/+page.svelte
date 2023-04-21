@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import LL from '$lib/i18n/i18n-svelte';
 	import type { Recipe } from '$lib/interface/Recipe';
 	import { recipeStore } from '$lib/shared/stores/general';
 
@@ -38,13 +39,13 @@
 			</svg>
 		</button>
 
-		<button class="text-lg font-semibold pt-2 " on:click={translateRecipe}> Translate </button>
+		<button class="text-lg font-semibold pt-2 " on:click={translateRecipe}> {$LL.recipe.translate()} </button>
 		<div class="text-xl sm:text-2xl font-semibold mt-5 mb-5">{$recipeStore.mealname}</div>
 		<div class="text-xl text-semibold text-slate-500 mt-5 mb-5">{$recipeStore.estimated_time}</div>
 		<div class="text-lg text-semibold text-slate-800 m-5">{$recipeStore.description}</div>
 		<hr class="h-px my-4 mx-8 bg-gray-200 border-0 dark:bg-gray-700/60" />
 		<div class="mt-2 mx-5 my-5">
-			<div class="text-center font-medium sm:font-bold uppercase">Ingredients</div>
+			<div class="text-center font-medium sm:font-bold uppercase">{$LL.recipe.ingredients()}</div>
 			<div class="justify-center text-center">
 				{#each $recipeStore.ingredients as ingredient}
 					<Ingredient bind:ingredient />
@@ -54,7 +55,7 @@
 
 		<hr class="h-px my-4 mx-8 bg-gray-200 border-0 dark:bg-gray-700/60" />
 		<div class="mt-2 mx-9 my-5">
-			<div class="text-center font-medium sm:font-bold uppercase">Instructions</div>
+			<div class="text-center font-medium sm:font-bold uppercase">{$LL.recipe.instructions()}</div>
 			<ul>
 				{#each Object.entries($recipeStore.instructions) as [step, instruction]}
 					<li>

@@ -11,7 +11,8 @@
 	import { apikey, saveRecipe } from '$lib/shared/stores/general';
 	import { ingredientsStore } from '$lib/shared/stores/general';
 	import { prompts } from '$lib/prompts';
-	import LL from '$lib/i18n/i18n-svelte';
+	import LL, { locale } from '$lib/i18n/i18n-svelte';
+	import { getLanguage } from '$lib/i18n/i18n-strings';
 
 	let veganSelect = false;
 	let fishSelect = false;
@@ -39,15 +40,19 @@
 			? 'fish'
 			: 'without';
 
-		let prompt = prompts.english[type];
-
+		let prompt = prompts.type[type];
+		
+		let currentLanguage = getLanguage($locale)
+		let languagePrompt = prompts.language;
 		const ingredientNames = $ingredientsStore.map((ingredient) => ingredient.ingredientName);
 
-		prompt = prompt.replace(/-MAIN-/, main);
+		languagePrompt = languagePrompt.replace(/-LANG-/, currentLanguage);
 		prompt = prompt.replace(/-INGREDIENTS-/, ingredientNames.join(', '));
+		prompt = prompt.replace(/-MAIN-/, main);
 
+		prompt += languagePrompt;
 		prompt += prompts.instructions;
-
+		
 		console.log(prompt);
 		
 		const { status, content } = await fetchRecipe($apikey, prompt);
@@ -60,6 +65,7 @@
 		}
 
 		generating = false;
+		
 		saveRecipe(content);
 		goto('/recipe');
 	}
@@ -86,7 +92,7 @@
 	<div class="flex-wrap grid justify-center">
 		{#if validAPI}
 			{#if generating}
-				<div class="font-thin dark:text-white text-sm">This takes around 15 seconds</div>
+				<div class="font-thin dark:text-white text-sm">{$LL.generate.info.time()}</div>
 				<Button disabled gradient color="cyanToBlue" size="lg">
 					<div class="flex items-center justify-center">
 						<div

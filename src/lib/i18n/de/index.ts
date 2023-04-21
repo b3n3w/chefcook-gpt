@@ -51,6 +51,11 @@ const de: Translation = {
 		header: "Deine Rezepte",
 		noRecipes: "Aktuell keine Rezepte vorhanden 😰"
 	},
+	recipe: {
+		translate: "Übersetzen",
+		ingredients: "Zutaten",
+		instructions: "Zubereitung"
+	},
 	settings: {
 		darkmode: {
 			header: "Dunkelmodus",

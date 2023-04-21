@@ -1,6 +1,7 @@
 <script lang="ts">
 	import MdiPasta from '~icons/mdi/pasta';
 	import IconParkSolidRice from '~icons/icon-park-solid/rice';
+	import LL from '$lib/i18n/i18n-svelte';
 
 	export let pasta = false;
 	export let rice = false;
@@ -27,7 +28,7 @@
 	>
 		<div class="grid content-center text-center justify-center">
 			<div class="pt-2 pb-1 sm:pt-5 sm:pb-2"><MdiPasta style="font-size:2.5em" /></div>
-			<div class="pt-1 sm:pt-2">Pasta</div>
+			<div class="pt-1 sm:pt-2">{$LL.generate.mains.pasta()}</div>
 		</div>
 	</div>
 	<div
@@ -38,7 +39,7 @@
 	>
 		<div class=" grid content-center text-center justify-center">
 			<div class="pt-2 pb-1 sm:pt-5 sm:pb-2"><IconParkSolidRice style="font-size:2.5em" /></div>
-			<div class="pt-1 sm:pt-2">Rice</div>
+			<div class="pt-1 sm:pt-2">{$LL.generate.mains.rice()}</div>
 		</div>
 	</div>
 </div>

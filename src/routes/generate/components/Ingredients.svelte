@@ -1,9 +1,11 @@
 <script lang="ts">
 	import type { Ingredient } from '$lib/interface/Ingredient';
+	import LL from '$lib/i18n/i18n-svelte';
 	import { onMount } from 'svelte';
 	
 	import { fade, fly } from 'svelte/transition';
 	import Recommendation from './Recommendation.svelte';
+
 
 	export let ingredients: Ingredient[] = [];
 	let recommendations: string[] = ['Onion', 'Cheese', 'Tofu', 'Zucchini', 'Paprika'];
@@ -89,7 +91,7 @@
 				}}
 				class="border justify-center border-gray-200 dark:text-white dark:bg-slate-800 text-sm focus:ring-orange-400 focus:border-orange-400 rounded-xl"
 				type="text"
-				placeholder="Enter to add"
+				placeholder={$LL.generate.info.inputPlaceholer()}
 			/>
 			{#if dynamicList.length > 0}
 				<ul class="absolute z-50 pt-2 rounded-xl">
@@ -140,7 +142,7 @@
 		{/each}
 		{#if ingredients.length === 0 && did_remove}
 			<div class="text-center" in:fade={{ delay: 600 }}>
-				<p class="mt-3">No ingredients added</p>
+				<p class="mt-3">{$LL.generate.info.noIngredients()}</p>
 			</div>
 		{/if}
 	</div>

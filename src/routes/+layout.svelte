@@ -4,7 +4,8 @@
 	import { browser } from '$app/environment';
 	import PageTransition from '$lib/components/PageTransition.svelte';
 	import Footer from './Footer.svelte';
-
+	import { setLocale } from '$lib/i18n/i18n-svelte.js';
+	
 	if (browser) {
 		if (
 			localStorage.theme === 'dark' ||
@@ -15,6 +16,8 @@
 			document.documentElement.classList.remove('dark');
 		}
 	}
+	export let data;
+	setLocale(data.locale);
 </script>
 
 <Nav />

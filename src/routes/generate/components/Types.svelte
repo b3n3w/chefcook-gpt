@@ -5,6 +5,7 @@
 	import ElLeaf from '~icons/el/leaf';
 
 	import { fly } from 'svelte/transition';
+	import LL from '$lib/i18n/i18n-svelte';
 
 	const options = {
 		vegan: { vegan: true, fish: false, meat: false, veggie: false },
@@ -37,7 +38,7 @@
 				<div class="flex justify-center pt-3 pb-3 sm:pb-2">
 					<LucideVegan class="text-2xl sm:text-3xl md:text-4xl" />
 				</div>
-				<div class="pb-2 text-lg">Vegan</div>
+				<div class="pb-2 text-lg">{$LL.generate.types.vegan()}</div>
 			</div>
 		</div>
 		<div
@@ -51,7 +52,7 @@
 				<div class="flex justify-center pt-3 pb-3 sm:pb-2">
 					<ElLeaf class="text-2xl sm:text-3xl md:text-4xl" />
 				</div>
-				<div class="pb-2 text-lg">Veggie</div>
+				<div class="pb-2 text-lg">{$LL.generate.types.veggie()}</div>
 			</div>
 		</div>
 		<div
@@ -65,7 +66,7 @@
 				<div class="flex justify-center pt-3 pb-3 sm:pb-2">
 					<IconFish class="text-2xl sm:text-3xl md:text-4xl" />
 				</div>
-				<span class="pb-2 text-lg">Fish</span>
+				<span class="pb-2 text-lg">{$LL.generate.types.fish()}</span>
 			</div>
 		</div>
 		<div
@@ -79,7 +80,7 @@
 				<div class="flex justify-center pt-3 pb-3 sm:pb-2">
 					<IconMeat class="text-2xl sm:text-3xl md:text-4xl" />
 				</div>
-				<div class="pb-2 text-lg">Meat</div>
+				<div class="pb-2 text-lg">{$LL.generate.types.meat()}</div>
 			</div>
 		</div>
 	</div>

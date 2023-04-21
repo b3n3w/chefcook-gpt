@@ -11,6 +11,7 @@
 	import { apikey, saveRecipe } from '$lib/shared/stores/general';
 	import { ingredientsStore } from '$lib/shared/stores/general';
 	import { prompts } from '$lib/prompts';
+	import LL from '$lib/i18n/i18n-svelte';
 
 	let veganSelect = false;
 	let fishSelect = false;
@@ -66,7 +67,7 @@
 
 <div class="stack">
 	<div class="flex flex-wrap justify-center mt-5 font-thin dark:text-white">
-		<p class="uppercase text-lg sm:text-xl">Select what you love</p>
+		<p class="uppercase text-lg sm:text-xl">{$LL.generate.headers.type()}</p>
 	</div>
 	<Types
 		bind:vegan={veganSelect}
@@ -75,11 +76,11 @@
 		bind:meat={meatSelect}
 	/>
 	<div class="flex flex-wrap justify-center dark:text-white">
-		<p class="uppercase text-lg sm:text-xl font-thin">Select your main</p>
+		<p class="uppercase text-lg sm:text-xl font-thin">{$LL.generate.headers.main()}</p>
 	</div>
 	<Mains bind:pasta={pastaSelect} bind:rice={riceSelect} />
 	<div class="flex flex-wrap justify-center dark:text-white">
-		<p class="uppercase text-lg sm:text-xl font-thin">What do you have at home ?</p>
+		<p class="uppercase text-lg sm:text-xl font-thin">{$LL.generate.headers.atHome()}</p>
 	</div>
 	<Ingredients bind:ingredients={$ingredientsStore} />
 	<div class="flex-wrap grid justify-center">
@@ -92,7 +93,7 @@
 							class="border-t-transparent border-solid animate-spin rounded-full border-white border-4"
 						/>
 						<div class="ml-2">
-							Processing... <div />
+							{$LL.generate.info.processing()} <div />
 						</div>
 					</div>
 				</Button>
@@ -103,15 +104,15 @@
 						gradient
 						color="cyanToBlue"
 						size="lg"
-						on:click={() => generatePromt()}>Generate now</Button
+						on:click={() => generatePromt()}>{$LL.common.button()}</Button
 					>
 				</div>
 			{/if}
 		{:else}
 			<div class="justify-center">
-				<div class="font-light text-red-500 text-sm">Api-Key not valid or not set</div>
+				<div class="font-light text-red-500 text-sm">{$LL.generate.info.invalidKey()}</div>
 				<Button class="btn-generate " href="/settings" gradient color="red" size="sm"
-					>Open settings</Button
+					>{$LL.generate.buttons.settings()}</Button
 				>
 			</div>
 		{/if}

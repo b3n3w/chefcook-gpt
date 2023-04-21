@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { recipesStore, recipeStore, removeRecipe } from '$lib/shared/stores/general';
-	import { Button } from 'flowbite-svelte';
 	import type { Recipe } from '$lib/interface/Recipe';
+	import LL from '$lib/i18n/i18n-svelte';
+
+	import { Button } from 'flowbite-svelte';
+
 	import { goto } from '$app/navigation';
+
 
 	function openRecipe(recipeSelect: Recipe) {
 		recipeStore.set(recipeSelect);
@@ -10,7 +14,7 @@
 	}
 </script>
 
-<div class="dark:text-white text-2xl mt-4 font-light text-center">Your recipes</div>
+<div class="dark:text-white text-2xl mt-4 font-light text-center">{$LL.recipes.header()}</div>
 <div class="stack-container sm:grid sm:grid-cols-2 sm:gap-4 lg:flex lg:flex-wrap justify-center">
 	{#if $recipesStore.length != 0}
 		{#each $recipesStore as recipe, i}
@@ -36,11 +40,11 @@
 	{:else}
 		<div class="flex flex-col items-center">
 			<div class="dark:text-white text-2xl mt-10 text-center">
-				Currently you don't have any recipe :(
+				{$LL.recipes.noRecipes()}
 			</div>
 			<div class="pt-8 flex justify-center">
 				<Button href="/generate" class="btn-generate" gradient color="cyanToBlue" size="xl"
-					>Create one!</Button
+					>{$LL.common.button()}</Button
 				>
 			</div>
 		</div>

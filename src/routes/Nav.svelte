@@ -1,6 +1,7 @@
 <script>
+	import LL from '$lib/i18n/i18n-svelte';
 	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger} from 'flowbite-svelte';
-
+	
 </script>
 
 <Navbar let:hidden let:toggle>
@@ -11,8 +12,8 @@
 	</NavBrand>
 	<NavHamburger on:click={toggle} />
 	<NavUl {hidden}>
-		<NavLi href="/recipes">Recipes</NavLi>
-		<NavLi class="text-xl font-semibold dark:text-white" href="/generate">Create</NavLi>
-		<NavLi href="/settings">Settings</NavLi>
+		<NavLi href="/recipes">{$LL.nav.recipes()}</NavLi>
+		<NavLi class="text-xl font-semibold dark:text-white" href="/generate">{$LL.nav.create()}</NavLi>
+		<NavLi href="/settings">{$LL.nav.settings()}</NavLi>
 	</NavUl>
 </Navbar>

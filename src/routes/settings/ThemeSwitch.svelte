@@ -1,4 +1,6 @@
 <script lang="ts">
+	import LL from "$lib/i18n/i18n-svelte";
+
 	let darkMode = true;
 
 	function handleSwitchDarkMode() {
@@ -17,6 +19,6 @@
             : ''}"
 		on:click={handleSwitchDarkMode}
 	>
-		{!darkMode ? 'Enable' : 'Disable'}
+		{!darkMode ? $LL.settings.darkmode.disabled() : $LL.settings.darkmode.enabled()}
 	</button>
 </div>

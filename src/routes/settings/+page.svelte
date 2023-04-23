@@ -39,7 +39,7 @@
 			href="https://platform.openai.com/overview">OpenAI Platform</a
 		>
 	</p>
-	<div class="flex justify-between items-center w-full max-w-sm mt-4">
+	<div class="flex justify-between items-center w-full px-5 max-w-sm mt-4">
 		{#if hasApiKey}
 			<input
 				class="border justify-center border-green-500 dark:text-white dark:bg-slate-800 text-sm focus:ring-orange-400 focus:border-orange-400 rounded-xl w-full h-10"

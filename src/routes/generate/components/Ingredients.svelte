@@ -2,10 +2,9 @@
 	import type { Ingredient } from '$lib/interface/Ingredient';
 	import LL, { locale } from '$lib/i18n/i18n-svelte';
 	import { onMount } from 'svelte';
-	
+
 	import { fade, fly } from 'svelte/transition';
 	import Recommendation from './Recommendation.svelte';
-
 
 	export let ingredients: Ingredient[] = [];
 	let recommendations: string[] = ['Onion', 'Cheese', 'Tofu', 'Zucchini', 'Paprika'];
@@ -44,7 +43,6 @@
 			try {
 				let response = await fetch(`/api/ingredients?input=${next}&lang=${$locale}`);
 				dynamicList = await response.json();
-
 			} catch (error) {
 				// Handle the error here if needed
 			}
@@ -67,7 +65,7 @@
 </script>
 
 <div class="w-1/2 mx-auto flex item-center justify-center flex-col">
-	<div class="flex justify-center sm:px-40 mt-4 flex-grow">
+	<div class="flex justify-center sm:px-40 flex-grow">
 		{#each recommendations as ingredient, i}
 			<div in:fly={{ y: -15, delay: (i + 1) * 25 }}>
 				<Recommendation
@@ -120,7 +118,7 @@
 				class="flex mt-3 h-8 sm:h-11 w-full justify-centerbg-slate-300/30 rounded-xl dark:text-white dark:border-white"
 			>
 				<div
-					class="flex items-center justify-center w-8 sm:w-12 h-8 sm:h-11 dark:bg-gray-200/20 text-gray-700 font-semibold rounded-xl mr-5 sm:mr-3"
+					class="flex items-center justify-center w-8 sm:w-10 h-8 sm:h-11 dark:bg-gray-200/20 dark:text-white text-gray-700 font-semibold rounded-xl mr-5 sm:mr-3"
 				>
 					{i + 1}
 				</div>

@@ -5,7 +5,9 @@
 	import PageTransition from '$lib/components/PageTransition.svelte';
 	import Footer from './Footer.svelte';
 	import { setLocale } from '$lib/i18n/i18n-svelte.js';
-	
+	import { languageStore } from '$lib/shared/stores/general';
+	export let data;
+
 	if (browser) {
 		if (
 			localStorage.theme === 'dark' ||
@@ -15,16 +17,16 @@
 		} else {
 			document.documentElement.classList.remove('dark');
 		}
+		setLocale(data.locale);
 	}
-	export let data;
-	setLocale(data.locale);
+
 </script>
 
 <Nav />
 
 <div style="height: 100vh; overflow-y: auto;">
-<PageTransition>
-	<slot />
-</PageTransition>
+	<PageTransition>
+		<slot />
+	</PageTransition>
 </div>
-<Footer/>
+<Footer />

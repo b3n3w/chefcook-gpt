@@ -28,7 +28,7 @@
 			customSize="text-xl font-extrabold  md:text-2xl lg:text-2xl">{$LL.landing.header.ai()}</Heading
 		>
 	</div>
-	<div class="mt-10">
+	<div class="mt-10 px-3">
 		<span class="dark:text-white text-center uppercase font-light text-md sm:text-xl">
 			{$LL.landing.idea()}</span
 		>

@@ -33,6 +33,7 @@
 		generating = true;
 
 		let main = pastaSelect ? 'pasta' : riceSelect ? 'rice' : '';
+
 		let type = meatSelect
 			? 'meat'
 			: veggieSelect
@@ -83,7 +84,12 @@
 		bind:meat={meatSelect}
 	/>
 	<div class="flex flex-wrap justify-center pt-5 sm:pt-10 mb-4 sm:mb-6 dark:text-white">
-		<p class="uppercase text-lg sm:text-xl font-thin">{$LL.generate.headers.main()}</p>
+		<div class="flex flex-col items-center">
+			<p class="uppercase text-lg sm:text-xl font-thin">{$LL.generate.headers.main()}</p>
+			<div class="flex">
+				<p class="text-sm font-thin text-gray-400">Optional</p>
+			</div>
+		</div>
 	</div>
 	<Mains bind:pasta={pastaSelect} bind:rice={riceSelect} />
 	<div class="flex flex-wrap justify-center pt-5 sm:pt-10 mb-4 sm:mb-4 dark:text-white">

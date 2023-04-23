@@ -1,6 +1,6 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import { RAPID_API_KEY } from '$env/static/private';
-import { ingredients } from '$lib/ingredients';
+import { ingredients } from './ingredients';
 
 
 async function fetchExternalIngredients(input: string) {
@@ -13,7 +13,6 @@ async function fetchExternalIngredients(input: string) {
             'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
         }
     };
-
     const response = await fetch(endpoint, options)
     const ingredients = await response.json().catch((err) => {
         return new Response(JSON.stringify({ error: err }), {
@@ -22,26 +21,33 @@ async function fetchExternalIngredients(input: string) {
     });
     return new Response(JSON.stringify(ingredients.slice(0, 5)), { status: 200 })
 }
+
 export const GET: RequestHandler = async ({ url }) => {
 
-    const inputText: string = url.searchParams.get('input') || '';
-    const inputWords = inputText.toLowerCase().split(' ');
-    const filteredIng = ingredients
-        .filter((i) => {
-            const ingWords = i.toLowerCase().split(' ');
-            return inputWords.every((w) => ingWords.some((ingW) => ingW.startsWith(w)));
-        })
-        .sort((a, b) => {
-            const aLower = a.toLowerCase();
-            const bLower = b.toLowerCase();
-            const inputTextLower = inputText.toLowerCase();
+    const language = url.searchParams.get('lang')?.toLowerCase() || '';
 
-            if (aLower.indexOf(inputTextLower) === bLower.indexOf(inputTextLower)) {
+    const langIngredients = ingredients[language] || ingredients['en'];
+
+    const inputText = url.searchParams.get('input')?.toLowerCase() || '';
+    const inputWords = inputText.split(' ');
+
+    const filteredIngredients = langIngredients
+        .filter(ingredient =>
+            inputWords.every(word =>
+                ingredient.toLowerCase().includes(word))
+        )
+        .sort((a: string, b: string) => {
+            const aIndex = a.toLowerCase().indexOf(inputText);
+            const bIndex = b.toLowerCase().indexOf(inputText);
+
+            if (aIndex === bIndex) {
                 return a.length - b.length;
-            } else {
-                return aLower.indexOf(inputTextLower) - bLower.indexOf(inputTextLower);
             }
+            return aIndex - bIndex;
         });
-    return new Response(JSON.stringify(filteredIng.slice(0, 5)), { status: 200 });
 
+    return new Response(
+        JSON.stringify(filteredIngredients.slice(0, 5)),
+        { status: 200 }
+    );
 };

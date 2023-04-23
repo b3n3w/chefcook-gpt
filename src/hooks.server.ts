@@ -11,7 +11,6 @@ const handleDetectLocale = (async ({ event, resolve }) => {
 
 	const acceptLanguageHeaderDetector = initAcceptLanguageHeaderDetector(event.request);
 	const locale = detectLocale(acceptLanguageHeaderDetector);
-    console.log(locale);
     
 	event.locals.locale = locale;
 

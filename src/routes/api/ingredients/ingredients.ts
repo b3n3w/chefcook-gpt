@@ -12384,7 +12384,7 @@ export const ingredients = {
     "Kwiaty cukinii",
     "Cukinia",
     "Zwieback"
-  ]
+  ],
   es: [
     "Acai",
     "Achiote",

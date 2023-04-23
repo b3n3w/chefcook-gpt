@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Ingredient } from '$lib/interface/Ingredient';
-	import LL from '$lib/i18n/i18n-svelte';
+	import LL, { locale } from '$lib/i18n/i18n-svelte';
 	import { onMount } from 'svelte';
 	
 	import { fade, fly } from 'svelte/transition';
@@ -42,15 +42,16 @@
 			if (next === '' || next.length < 3) dynamicList = [];
 		} else {
 			try {
-				let response = await fetch(`/api/ingredients?input=${next}`);
+				let response = await fetch(`/api/ingredients?input=${next}&lang=${$locale}`);
 				dynamicList = await response.json();
+
 			} catch (error) {
 				// Handle the error here if needed
 			}
 		}
 	}
 
-	function handleClickOutside(event) {
+	function handleClickOutside(event: any) {
 		const list = document.querySelector('ul');
 		if (list && !list.contains(event.target)) {
 			dynamicList = [];

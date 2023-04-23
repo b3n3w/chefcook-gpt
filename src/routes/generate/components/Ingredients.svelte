@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Ingredient } from '$lib/interface/Ingredient';
-	import LL from '$lib/i18n/i18n-svelte';
+	import LL, { locale } from '$lib/i18n/i18n-svelte';
 	import { onMount } from 'svelte';
 	
 	import { fade, fly } from 'svelte/transition';
@@ -42,15 +42,16 @@
 			if (next === '' || next.length < 3) dynamicList = [];
 		} else {
 			try {
-				let response = await fetch(`/api/ingredients?input=${next}`);
+				let response = await fetch(`/api/ingredients?input=${next}&lang=${$locale}`);
 				dynamicList = await response.json();
+
 			} catch (error) {
 				// Handle the error here if needed
 			}
 		}
 	}
 
-	function handleClickOutside(event) {
+	function handleClickOutside(event: any) {
 		const list = document.querySelector('ul');
 		if (list && !list.contains(event.target)) {
 			dynamicList = [];
@@ -94,12 +95,15 @@
 				placeholder={$LL.generate.info.inputPlaceholer()}
 			/>
 			{#if dynamicList.length > 0}
-				<ul class="absolute z-50 pt-2 rounded-xl">
+				<ul class="absolute z-50 pt-2 rounded-xl w-48 bg-white/90">
 					{#each dynamicList as ingredient, i}
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<li
 							in:fly={{ y: 10, delay: (i + 1) * 60 }}
-							class="text-slate-700 py-2 px-4 w-full cursor-pointer bg-white hover:bg-orange-400/90 rounded-xl hover:text-white pt-0.5"
+							class="text-slate-700 py-2 px-4 w-full cursor-pointer hover:bg-orange-400/90 hover:text-white pt-0.5 {i ===
+							0
+								? 'font-semibold text-lg'
+								: ''}"
 							on:click={addFromList(ingredient)}
 							style="width: 100%; text-align: center;"
 						>

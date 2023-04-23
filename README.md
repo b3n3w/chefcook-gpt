@@ -6,10 +6,13 @@ Looking for recipe inspiration can be a daunting task, especially when you don't
 
 You want to try it out ?
 
-Check [Demo](https://recipes-gpt.xyz)!
+Check [Demo](https://recipes-gpt.xyz) yourself
 
-<img src="demo.png" alt="Demo Overview" width="500" >
+<img src="demo.gif" alt="Demo Overview" width="500" >
 
+## How to use it ?
+
+The main functionality is based on the OpenAI-API. Therefore, its required to add your own API-Key under settings. The Key is stored in the localstorage of the browser and will not be send to the SvelteKit API. 
 
 ## Developing
 

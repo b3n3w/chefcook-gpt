@@ -25,7 +25,7 @@ export function createForStorage(storageKey: string, data: any) {
 
 export function toLocalStorage(store: any, storageKey: string) {
     if (browser) {
-        store.subscribe((value: any)  => {
+        store.subscribe((value: any) => {
             let storageValue = (typeof value === 'object')
                 ? JSON.stringify(value)
                 : value
@@ -35,14 +35,16 @@ export function toLocalStorage(store: any, storageKey: string) {
     }
 }
 
-export function saveRecipe(data: string) {
+export function saveRecipe(data: string, type: string, lang: string) {
     if (browser) {
-        let obj: Recipe = JSON.parse(data)
+        let recipe: Recipe = JSON.parse(data)
+        recipe.lang = lang
+        recipe.type = type
         recipesStore.update((currentRecipes) => {
-            let newState = [obj, ...currentRecipes]
+            let newState = [recipe, ...currentRecipes]
             return newState
         })
-        recipeStore.set(obj);
+        recipeStore.set(recipe);
         toLocalStorage(recipesStore, 'recipes')
     }
 }
@@ -50,7 +52,7 @@ export function saveRecipe(data: string) {
 export function removeRecipe(mealname: string) {
     if (browser) {
         console.log("Removing");
-        
+
         let stored_recipes: Recipe[] = fromLocalStorage('recipes', []).recipes
         const index = stored_recipes.findIndex((recipe) => recipe.mealname === mealname);
         if (index !== -1) {

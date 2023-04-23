@@ -68,7 +68,7 @@
 		}
 
 		generating = false;
-		saveRecipe(content);
+		saveRecipe(content, type, $locale);
 		goto('/recipe');
 	}
 </script>

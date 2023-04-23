@@ -118,7 +118,7 @@
 				class="flex mt-3 h-8 sm:h-11 w-full justify-centerbg-slate-300/30 rounded-xl dark:text-white dark:border-white"
 			>
 				<div
-					class="flex items-center justify-center w-8 sm:w-12 h-8 sm:h-11 dark:bg-gray-200/20 text-gray-700 font-semibold rounded-xl mr-5 sm:mr-3"
+					class="flex items-center justify-center w-8 sm:w-10 h-8 sm:h-11 dark:bg-gray-200/20 dark:text-white text-gray-700 font-semibold rounded-xl mr-5 sm:mr-3"
 				>
 					{i + 1}
 				</div>

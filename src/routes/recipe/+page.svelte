@@ -20,6 +20,10 @@
 		let recipe: Recipe = translatedRecipe;
 		recipeStore.set(recipe);
 	}
+
+	function isCurrentLanguage() {
+		return $recipeStore.lang === $locale;
+	}
 </script>
 
 <div class="flex justify-center mt-5" transition:fly={{ y: 100 }}>
@@ -43,9 +47,11 @@
 			</svg>
 		</button>
 
-		<button class="text-lg font-semibold pt-2" on:click={translateRecipe}>
-			{$LL.recipe.translate()}
-		</button>
+		{#if isCurrentLanguage()}
+			<button class="text-lg font-semibold pt-2" on:click={translateRecipe}>
+				{$LL.recipe.translate()}
+			</button>
+		{/if}
 		<div class="text-xl sm:text-2xl font-semibold mt-5 mb-5">{$recipeStore.mealname}</div>
 		<div class="text-xl text-semibold text-slate-500 mt-5 mb-5">{$recipeStore.estimated_time}</div>
 		<div class="text-lg text-semibold text-slate-800 m-5">{$recipeStore.description}</div>

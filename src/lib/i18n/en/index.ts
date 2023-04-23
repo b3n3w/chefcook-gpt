@@ -21,7 +21,8 @@ const en = {
 		headers: {
 			type: "Select what you love",
 			main: "Select your main",
-			atHome: "What do you have at home ? "
+			atHome: "What do you have at home ? ",
+			time: "Home much time you have ?"
 		},
 		types: {
 			vegan: "Vegan",

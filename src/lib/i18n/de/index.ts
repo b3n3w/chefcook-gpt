@@ -23,7 +23,8 @@ const de: Translation = {
 		headers: {
 			type: "Welcher Typ bist du ? ",
 			main: "Auf was hast du Lust ?",
-			atHome: "Was hast du Zuhause ?"
+			atHome: "Was hast du Zuhause ?",
+			time: "Wieviel Zeit hast du ?"
 		},
 		types: {
 			vegan: "Vegan",

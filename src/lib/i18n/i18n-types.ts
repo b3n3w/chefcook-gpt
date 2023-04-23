@@ -73,6 +73,10 @@ type RootTranslation = {
 			 * W​h​a​t​ ​d​o​ ​y​o​u​ ​h​a​v​e​ ​a​t​ ​h​o​m​e​ ​?​ 
 			 */
 			atHome: string
+			/**
+			 * H​o​m​e​ ​m​u​c​h​ ​t​i​m​e​ ​y​o​u​ ​h​a​v​e​ ​?
+			 */
+			time: string
 		}
 		types: {
 			/**
@@ -256,6 +260,10 @@ export type TranslationFunctions = {
 			 * What do you have at home ? 
 			 */
 			atHome: () => LocalizedString
+			/**
+			 * Home much time you have ?
+			 */
+			time: () => LocalizedString
 		}
 		types: {
 			/**

@@ -22,7 +22,7 @@ const en = {
 			type: "Select what you love",
 			main: "Select your main",
 			atHome: "What do you have at home ? ",
-			time: "Home much time you have ?"
+			time: "How much time you have ?"
 		},
 		types: {
 			vegan: "Vegan",

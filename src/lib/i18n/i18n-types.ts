@@ -74,7 +74,7 @@ type RootTranslation = {
 			 */
 			atHome: string
 			/**
-			 * H​o​m​e​ ​m​u​c​h​ ​t​i​m​e​ ​y​o​u​ ​h​a​v​e​ ​?
+			 * H​o​w​ ​m​u​c​h​ ​t​i​m​e​ ​y​o​u​ ​h​a​v​e​ ​?
 			 */
 			time: string
 		}
@@ -261,7 +261,7 @@ export type TranslationFunctions = {
 			 */
 			atHome: () => LocalizedString
 			/**
-			 * Home much time you have ?
+			 * How much time you have ?
 			 */
 			time: () => LocalizedString
 		}

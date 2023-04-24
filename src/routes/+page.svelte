@@ -23,8 +23,7 @@
 		<Heading
 			tag="h1"
 			class="mb-3 text-center"
-			customSize="text-xlfont-extrabold  md:text-2xl lg:text-2xl"
-			>{$LL.landing.header.ai()}</Heading
+			customSize="text-xlfont-extrabold  md:text-2xl lg:text-2xl">{$LL.landing.header.ai()}</Heading
 		>
 	</div>
 	<div class="mt-10 px-3">

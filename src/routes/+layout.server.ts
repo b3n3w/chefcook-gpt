@@ -1,6 +1,5 @@
-
 export const load = async ({ locals }) => {
 	return {
-		locale: locals.locale,
+		locale: locals.locale
 	};
 };

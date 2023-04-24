@@ -17,7 +17,7 @@
 
 		let translatedRecipe: Recipe = await res.json();
 		let recipe: Recipe = translatedRecipe;
-		data = recipe
+		data = recipe;
 	}
 	export let data;
 

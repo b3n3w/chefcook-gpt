@@ -14,8 +14,7 @@
 	<p class="text-gray-700 text-center mb-4 font-medium">{estimated_time}</p>
 	<hr class="h-px my-4 mx-8 bg-gray-200 border-0 dark:bg-gray-700/20" />
 	<div class="font-thin">{description}</div>
-	<button
-		class="absolute top-2 right-2 text-gray-500 "
-		on:click={() => removeRecipe(mealname)}><BiTrashFill class="text-slate-300 hover:text-orange-400" /></button
+	<button class="absolute top-2 right-2 text-gray-500" on:click={() => removeRecipe(mealname)}
+		><BiTrashFill class="text-slate-300 hover:text-orange-400" /></button
 	>
 </div>

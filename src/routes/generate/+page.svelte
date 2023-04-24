@@ -13,7 +13,6 @@
 	import LL, { locale } from '$lib/i18n/i18n-svelte';
 	import { getLanguage } from '$lib/i18n/i18n-strings';
 	import TimeSlider from './components/TimeSlider.svelte';
-	import { slugify } from '$lib/helpers';
 
 	let veganSelect = false;
 	let fishSelect = false;
@@ -127,7 +126,7 @@
 				</div>
 			{/if}
 		{:else}
-		<div class="font-light text-red-500 text-sm">{$LL.generate.info.invalidKey()}</div>
+			<div class="font-light text-red-500 text-sm">{$LL.generate.info.invalidKey()}</div>
 			<a href="/settings">
 				<button
 					class="bg-gradient-to-r rounded-xl text-white from-orange-500 to-red-700 to-90% px-4 py-2"

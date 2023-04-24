@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let time = 0
+	export let time = 0;
 </script>
 
 <div class="flex justify-center">
@@ -9,7 +9,7 @@
 			class="w-full h-2 rounded-lg accent-orange-400 cursor-pointer bg-gray-200"
 			min="0"
 			max="100"
-            bind:value={time}
+			bind:value={time}
 			step="20"
 		/>
 		<ul class="flex justify-between w-full">

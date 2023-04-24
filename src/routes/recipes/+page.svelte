@@ -9,7 +9,7 @@
 	import { slugify } from '$lib/helpers';
 
 	function openRecipe(recipeSelect: Recipe) {
-		let slug = slugify(recipeSelect.mealname)
+		let slug = slugify(recipeSelect.mealname);
 		goto(`/recipe/${slug}`);
 	}
 </script>

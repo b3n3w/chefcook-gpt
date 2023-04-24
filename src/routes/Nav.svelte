@@ -5,7 +5,6 @@
 	import { toLocalStorage } from '$lib/shared/stores/general';
 	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
 
-	
 	export const getLang = async (selected) => {
 		await loadLocaleAsync(selected);
 		setLocale($locale);

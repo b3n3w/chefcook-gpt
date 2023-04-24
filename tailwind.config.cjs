@@ -5,14 +5,6 @@ const config = {
 	],
 
 	theme: {
-		// colors: {
-
-		// 	'purple-dark': '#9c89b8',
-		// 	'purple-light': '#b8bedd',
-		// 	'pink-dark': '#f0a6ca',
-		// 	'pink': '#efc3e6',
-		// 	'cream': '#f0e6ef'
-		// },
 		extend: {},
 	},
 

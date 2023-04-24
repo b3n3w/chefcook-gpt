@@ -6,10 +6,11 @@
 	import { goto } from '$app/navigation';
 	import RecipeCard from './RecipeCard.svelte';
 	import { fly } from 'svelte/transition';
+	import { slugify } from '$lib/helpers';
 
 	function openRecipe(recipeSelect: Recipe) {
-		recipeStore.set(recipeSelect);
-		goto('/recipe');
+		let slug = slugify(recipeSelect.mealname)
+		goto(`/recipe/${slug}`);
 	}
 </script>
 

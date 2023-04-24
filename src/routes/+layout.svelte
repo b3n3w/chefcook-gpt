@@ -19,7 +19,6 @@
 		}
 		setLocale(data.locale);
 	}
-
 </script>
 
 <Nav />

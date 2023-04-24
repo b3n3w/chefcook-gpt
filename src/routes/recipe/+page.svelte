@@ -22,11 +22,13 @@
 	}
 
 	function isCurrentLanguage() {
+		console.log($recipeStore);
+		
 		return $recipeStore.lang === $locale;
 	}
 </script>
 
-<div class="flex justify-center mt-5" transition:fly={{ y: 100 }}>
+<div class="flex justify-center mt-5" in:fly={{ y: 100 }}>
 	<div
 		class="bg-white/90 shadow-lg rounded-lg w-full ml-4 mr-4 mb-20 sm:ml-10 sm:mr-10 sm:w-1/2 justify-center text-center relative"
 	>
@@ -47,7 +49,7 @@
 			</svg>
 		</button>
 
-		{#if isCurrentLanguage()}
+		{#if !isCurrentLanguage()}
 			<button class="text-lg font-semibold pt-2" on:click={translateRecipe}>
 				{$LL.recipe.translate()}
 			</button>

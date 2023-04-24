@@ -1,7 +1,6 @@
 <script>
 	import LL from '$lib/i18n/i18n-svelte';
-	import { Heading, Span } from 'flowbite-svelte';
-	import { Button } from 'flowbite-svelte';
+	import { Heading } from 'flowbite-svelte';
 	import { fade } from 'svelte/transition';
 </script>
 
@@ -24,7 +23,7 @@
 		<Heading
 			tag="h1"
 			class="mb-3 text-center"
-			customSize="text-xl font-extrabold  md:text-2xl lg:text-2xl"
+			customSize="text-xlfont-extrabold  md:text-2xl lg:text-2xl"
 			>{$LL.landing.header.ai()}</Heading
 		>
 	</div>

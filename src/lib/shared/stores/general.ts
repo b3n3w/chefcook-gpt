@@ -51,16 +51,14 @@ export function saveRecipe(data: string, type: string, lang: string) {
 
 export function removeRecipe(mealname: string) {
     if (browser) {
-        console.log("Removing");
+        let stored_recipes: Recipe[] = fromLocalStorage('recipes', [])
 
-        let stored_recipes: Recipe[] = fromLocalStorage('recipes', []).recipes
         const index = stored_recipes.findIndex((recipe) => recipe.mealname === mealname);
         if (index !== -1) {
             stored_recipes.splice(index, 1);
         }
-        recipesStore.update(() => {
-            return stored_recipes
-        })
+        recipesStore.set(stored_recipes)
+        toLocalStorage(recipesStore, 'recipes')
     }
 }
 

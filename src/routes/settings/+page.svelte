@@ -34,9 +34,9 @@
 	<div class="m-4" />
 	<h2 class="mt-4 mb-2 text-lg font-semibold dark:text-white">API Key</h2>
 	<p class="dark:text-white text-sm mr-5 ml-5 text-center">
-		{$LL.settings.apiKey.info()}<a
+		{$LL.settings.apiKey.info()} <a
 			class="font-bold underline"
-			href="https://platform.openai.com/overview">OpenAI Platform</a
+			href="https://platform.openai.com/overview"> OpenAI Platform</a
 		>
 	</p>
 	<div class="flex justify-between items-center w-full px-5 max-w-sm mt-4">

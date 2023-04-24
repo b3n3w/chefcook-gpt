@@ -3,7 +3,6 @@
 	import { Heading, Span } from 'flowbite-svelte';
 	import { Button } from 'flowbite-svelte';
 	import { fade } from 'svelte/transition';
-
 </script>
 
 <div class="grid grid-flow-row auto-rows-max mt-10 justify-center">
@@ -14,18 +13,19 @@
 		<Heading
 			tag="h1"
 			class="mb-3 text-center"
-			customSize="text-xl font-extrabold  md:text-2xl lg:text-2xl">{$LL.landing.header.gen()}</Heading
+			customSize="text-xl font-extrabold  md:text-2xl lg:text-2xl"
+			>{$LL.landing.header.gen()}</Heading
 		>
-		<Heading
-			tag="h1"
-			class="mb-3 text-center uppercase"
-			customSize="text-xl font-extrabold  md:text-4xl lg:text-3xl"
-			><Span gradient>{$LL.landing.header.recipe()}</Span></Heading
+		<div
+			class="bg-gradient-to-r bg-clip-text text-transparent from-yellow-200 text-grad to-orange-500 to-90% mb-3 text-center uppercase font-extrabold md:text-4xl lg:text-3xl"
 		>
+			{$LL.landing.header.recipe()}
+		</div>
 		<Heading
 			tag="h1"
 			class="mb-3 text-center"
-			customSize="text-xl font-extrabold  md:text-2xl lg:text-2xl">{$LL.landing.header.ai()}</Heading
+			customSize="text-xl font-extrabold  md:text-2xl lg:text-2xl"
+			>{$LL.landing.header.ai()}</Heading
 		>
 	</div>
 	<div class="mt-10 px-3">
@@ -35,9 +35,13 @@
 	</div>
 
 	<div class="pt-8 flex justify-center">
-		<Button href="/generate" class="btn-generate" gradient color="cyanToBlue" size="xl"
-			>{$LL.common.button()}</Button
-		>
+		<a href="/generate">
+			<button
+				class="bg-gradient-to-r rounded-xl text-white from-yellow-400 to-orange-500 to-90% px-5 py-3 hover:from-orange-500 hover:to-yellow-400"
+			>
+				{$LL.common.button()}
+			</button>
+		</a>
 	</div>
 </div>
 

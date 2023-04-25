@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
-	import { Button } from 'flowbite-svelte';
 
 	import Types from './components/Types.svelte';
 	import Mains from './components/Mains.svelte';
@@ -68,12 +67,12 @@
 		}
 
 		generating = false;
-		saveRecipe(content, type, $locale);
-		goto('/recipe');
+		const recipe = saveRecipe(content, type, $locale);
+		goto(`/recipe/${recipe?.slug}`);
 	}
 </script>
 
-<div class="stack">
+<div class="stack mb-5">
 	<div class="flex flex-wrap justify-center pt-5 sm:pt-10 mb-4 sm:mb-6 font-thin dark:text-white">
 		<p class="uppercase text-lg sm:text-xl">{$LL.generate.headers.type()}</p>
 	</div>
@@ -104,7 +103,9 @@
 		{#if validAPI}
 			{#if generating}
 				<div class="font-thin dark:text-white text-sm">{$LL.generate.info.time()}</div>
-				<Button disabled gradient color="cyanToBlue" size="lg">
+				<button
+					class="bg-gradient-to-r rounded-xl text-white from-yellow-400 to-orange-500 to-90% px-4 py-2"
+				>
 					<div class="flex items-center justify-center">
 						<div
 							class="border-t-transparent border-solid animate-spin rounded-full border-white border-4"
@@ -114,25 +115,25 @@
 							<div />
 						</div>
 					</div>
-				</Button>
+				</button>
 			{:else}
 				<div in:fly={{ y: 50 }}>
-					<Button
-						class="btn-generate "
-						gradient
-						color="cyanToBlue"
-						size="lg"
-						on:click={() => generatePromt()}>{$LL.common.button()}</Button
-					>
+					<button
+						class="bg-gradient-to-r rounded-xl text-white from-yellow-400 to-orange-500 to-90% px-4 py-2 hover:from-orange-500 hover:to-yellow-400"
+						on:click={() => generatePromt()}
+						>{$LL.common.button()}
+					</button>
 				</div>
 			{/if}
 		{:else}
-			<div class="justify-center">
-				<div class="font-light text-red-500 text-sm">{$LL.generate.info.invalidKey()}</div>
-				<Button class="btn-generate " href="/settings" gradient color="red" size="sm"
-					>{$LL.generate.buttons.settings()}</Button
+			<div class="font-light text-red-500 text-sm">{$LL.generate.info.invalidKey()}</div>
+			<a href="/settings">
+				<button
+					class="bg-gradient-to-r rounded-xl text-white from-orange-500 to-red-700 to-90% px-4 py-2"
 				>
-			</div>
+					{$LL.generate.buttons.settings()}
+				</button>
+			</a>
 		{/if}
 	</div>
 </div>

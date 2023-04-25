@@ -1,77 +1,78 @@
-import type { Translation } from '../i18n-types'
+import type { Translation } from '../i18n-types';
 import en from '../en';
 
 const it: Translation = {
 	...(en as Translation),
 	common: {
-		button: "Genera uno!"
+		button: 'Genera uno!'
 	},
 	nav: {
-		create: "Creare",
-		recipes: "Ricette",
-		settings: "Impostazioni"
+		create: 'Creare',
+		recipes: 'Ricette',
+		settings: 'Impostazioni'
 	},
 	landing: {
 		header: {
-			gen: "creare",
-			recipe: "La tua ricetta",
-			ai: "Con AI"
+			gen: 'creare',
+			recipe: 'La tua ricetta',
+			ai: 'Con AI'
 		},
-		idea: "Cibo a casa ma non ho idea di cosa cucinare"
+		idea: 'Cibo a casa ma non ho idea di cosa cucinare'
 	},
 	generate: {
 		headers: {
-			type: "Seleziona ciò che ami",
-			main: "Seleziona il tuo principale",
-			atHome: "Cosa hai a casa?"
+			type: 'Seleziona ciò che ami',
+			main: 'Seleziona il tuo principale',
+			atHome: 'Cosa hai a casa?',
+			time: 'Quanto tempo avete a disposizione?'
 		},
 		types: {
-			vegan: "Vegana",
-			veggie: "Vegetariana",
-			fish: "Pescare",
-			meat: "Carne"
+			vegan: 'Vegana',
+			veggie: 'Vegetariana',
+			fish: 'Pescare',
+			meat: 'Carne'
 		},
 		mains: {
-			pasta: "Pasta",
-			rice: "Riso",
-			salad: "Insalata"
+			pasta: 'Pasta',
+			rice: 'Riso',
+			salad: 'Insalata'
 		},
 		info: {
-			noIngredients: "Nessun ingrediente aggiunto",
-			inputPlaceholer: "Inserisci per aggiungere",
-			time: "Questo richiede circa 15 secondi",
-			invalidKey: "Api-key non valido o non impostato",
-			processing: "In lavorazione..."
+			noIngredients: 'Nessun ingrediente aggiunto',
+			inputPlaceholer: 'Inserisci per aggiungere',
+			time: 'Questo richiede circa 15 secondi',
+			invalidKey: 'Api-key non valido o non impostato',
+			processing: 'In lavorazione...'
 		},
 		buttons: {
-			settings: "Impostazioni aperte"
+			settings: 'Impostazioni aperte'
 		}
 	},
 	recipes: {
-		header: "Le tue ricette",
-		noRecipes: "Attualmente non hai alcuna ricetta 😰"
+		header: 'Le tue ricette',
+		noRecipes: 'Attualmente non hai alcuna ricetta 😰'
 	},
 	recipe: {
-		translate: "Tradurre",
-		ingredients: "ingredienti",
-		instructions: "Istruzioni"
+		translate: 'Tradurre',
+		ingredients: 'ingredienti',
+		instructions: 'Istruzioni'
 	},
 	settings: {
 		darkmode: {
-			header: "Modalità scura",
-			enabled: "disattivare",
-			disabled: "Abilitare"
+			header: 'Modalità scura',
+			enabled: 'disattivare',
+			disabled: 'Abilitare'
 		},
 		apiKey: {
-			info: "Se non hai ancora un api-key. Si prega di registrarsi a:",
-			invalid: "Set non valido o nessun api-key!",
-			valid: "Api-key sembra buono! Cuciniamo!",
+			info: 'Se non hai ancora un api-key. Si prega di registrarsi a:',
+			invalid: 'Set non valido o nessun api-key!',
+			valid: 'Api-key sembra buono! Cuciniamo!',
 			button: {
-				save: "Salva",
-				valid: "Valida"
+				save: 'Salva',
+				valid: 'Valida'
 			}
 		}
 	}
 };
 
-export default it
+export default it;

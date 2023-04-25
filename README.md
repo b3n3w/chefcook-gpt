@@ -12,7 +12,7 @@ Check [Demo](https://recipes-gpt.xyz) yourself
 
 ## How to use it ?
 
-The main functionality is based on the OpenAI-API. Therefore, its required to add your own API-Key under settings. The Key is stored in the localstorage of the browser and will not be send to the SvelteKit API. 
+The main functionality is based on the OpenAI-API. Therefore, its required to add your own API-Key under settings. The Key is stored in the localstorage of the browser and will not be send to the SvelteKit API.
 
 ## Developing
 

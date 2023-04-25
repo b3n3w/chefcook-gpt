@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LL from "$lib/i18n/i18n-svelte";
+	import LL from '$lib/i18n/i18n-svelte';
 
 	let darkMode = true;
 
@@ -14,9 +14,7 @@
 
 <div class="flex flex-col items-center">
 	<button
-		class="px-4 dark:text-white rounded-lg border  {darkMode
-            ? 'border-orange-200 border'
-            : ''}"
+		class="px-4 dark:text-white rounded-lg border {darkMode ? 'border-orange-200 border' : ''}"
 		on:click={handleSwitchDarkMode}
 	>
 		{!darkMode ? $LL.settings.darkmode.disabled() : $LL.settings.darkmode.enabled()}

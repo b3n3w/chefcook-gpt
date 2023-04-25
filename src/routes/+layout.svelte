@@ -2,10 +2,9 @@
 	import '../app.postcss';
 	import Nav from './Nav.svelte';
 	import { browser } from '$app/environment';
-	import PageTransition from '$lib/components/PageTransition.svelte';
 	import Footer from './Footer.svelte';
 	import { setLocale } from '$lib/i18n/i18n-svelte.js';
-	import { languageStore } from '$lib/shared/stores/general';
+
 	export let data;
 
 	if (browser) {
@@ -19,14 +18,11 @@
 		}
 		setLocale(data.locale);
 	}
-
 </script>
 
 <Nav />
 
 <div style="height: 100vh; overflow-y: auto;">
-	<PageTransition>
-		<slot />
-	</PageTransition>
+	<slot />
 </div>
 <Footer />

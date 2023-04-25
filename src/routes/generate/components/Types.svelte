@@ -28,7 +28,7 @@
 <div class="flex flex-wrap space-x-2 sm:space-x-4 justify-center select-none">
 	<div
 		in:fly={{ y: 20, delay: 100 }}
-		class="shadow-sm w-16 h-24 sm:w-32 sm:h-24 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {vegan
+		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {vegan
 			? 'border-orange-400 border-3'
 			: ''}"
 		on:click={() => toggleOption('vegan')}
@@ -37,12 +37,12 @@
 			<div class="flex justify-center pt-3 pb-3 sm:pb-2">
 				<LucideVegan class="text-2xl sm:text-3xl md:text-4xl" />
 			</div>
-			<div class="pb-2 text-lg">{$LL.generate.types.vegan()}</div>
+			<div class="pb-5 text-lg">{$LL.generate.types.vegan()}</div>
 		</div>
 	</div>
 	<div
 		in:fly={{ y: 20, delay: 100 }}
-		class="shadow-sm w-16 h-24 sm:w-32 sm:h-24 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {veggie
+		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {veggie
 			? 'border-orange-400 border-3'
 			: ''}"
 		on:click={() => toggleOption('veggie')}
@@ -56,7 +56,7 @@
 	</div>
 	<div
 		in:fly={{ y: 20, delay: 150 }}
-		class="shadow-sm w-16 h-24 sm:w-32 sm:h-24 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {fish
+		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {fish
 			? 'border-orange-400 border-3'
 			: ''}"
 		on:click={() => toggleOption('fish')}
@@ -70,7 +70,7 @@
 	</div>
 	<div
 		in:fly={{ y: 20, delay: 200 }}
-		class="shadow-sm w-16 h-24 sm:w-32 sm:h-24 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {meat
+		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {meat
 			? 'border-orange-400 border-3'
 			: ''}"
 		on:click={() => toggleOption('meat')}

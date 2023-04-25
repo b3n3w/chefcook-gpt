@@ -5,7 +5,6 @@
 	import { toLocalStorage } from '$lib/shared/stores/general';
 	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
 
-	
 	export const getLang = async (selected) => {
 		await loadLocaleAsync(selected);
 		setLocale($locale);
@@ -28,7 +27,7 @@
 			on:change={(event) => getLang(event.target.value)}
 		>
 			{#each locales as lang}
-				<option value={lang}>
+				<option class="text-black" value={lang}>
 					{lang}
 				</option>
 			{/each}

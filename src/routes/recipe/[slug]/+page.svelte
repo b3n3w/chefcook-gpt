@@ -2,7 +2,6 @@
 	import { goto } from '$app/navigation';
 	import LL, { locale } from '$lib/i18n/i18n-svelte';
 	import type { Recipe } from '$lib/interface/Recipe';
-	import { recipeStore } from '$lib/shared/stores/general';
 
 	import Ingredient from './Ingredient.svelte';
 	import { fly } from 'svelte/transition';
@@ -11,22 +10,23 @@
 		const res = await fetch('/api/translate', {
 			method: 'POST',
 			body: JSON.stringify({
-				transData: $recipeStore,
+				transData: data,
 				language: $locale
 			})
 		});
 
 		let translatedRecipe: Recipe = await res.json();
 		let recipe: Recipe = translatedRecipe;
-		recipeStore.set(recipe);
+		data = recipe;
 	}
+	export let data;
 
 	function isCurrentLanguage() {
-		return $recipeStore.lang === $locale;
+		return data.lang === $locale;
 	}
 </script>
 
-<div class="flex justify-center mt-5" transition:fly={{ y: 100 }}>
+<div class="flex justify-center mt-5" in:fly={{ y: 100 }}>
 	<div
 		class="bg-white/90 shadow-lg rounded-lg w-full ml-4 mr-4 mb-20 sm:ml-10 sm:mr-10 sm:w-1/2 justify-center text-center relative"
 	>
@@ -47,21 +47,25 @@
 			</svg>
 		</button>
 
-		{#if isCurrentLanguage()}
+		{#if !isCurrentLanguage()}
 			<button class="text-lg font-semibold pt-2" on:click={translateRecipe}>
 				{$LL.recipe.translate()}
 			</button>
 		{/if}
-		<div class="text-xl sm:text-2xl font-semibold mt-5 mb-5">{$recipeStore.mealname}</div>
-		<div class="text-xl text-semibold text-slate-500 mt-5 mb-5">{$recipeStore.estimated_time}</div>
-		<div class="text-lg text-semibold text-slate-800 m-5">{$recipeStore.description}</div>
+		<div class="text-xl sm:text-2xl font-semibold mt-5 mb-5">{data.mealname}</div>
+		<div class="text-xl text-semibold text-slate-500 mt-5 mb-5">{data.estimated_time}</div>
+		<div class="text-lg text-semibold text-slate-800 m-5">{data.description}</div>
 		<hr class="h-px my-4 mx-8 bg-gray-200 border-0 dark:bg-gray-700/60" />
 		<div class="mt-2 mx-5 my-5">
 			<div class="text-center font-medium sm:font-bold uppercase">{$LL.recipe.ingredients()}</div>
 			<div class="justify-center text-center">
-				{#each $recipeStore.ingredients as ingredient}
-					<Ingredient bind:ingredient />
-				{/each}
+				{#if data.ingredients}
+					{#each data.ingredients as ingredient}
+						<Ingredient bind:ingredient />
+					{:else}
+						<div>Loading</div>
+					{/each}
+				{/if}
 			</div>
 		</div>
 
@@ -69,14 +73,18 @@
 		<div class="mt-2 mx-9 my-5">
 			<div class="text-center font-medium sm:font-bold uppercase">{$LL.recipe.instructions()}</div>
 			<ul>
-				{#each Object.entries($recipeStore.instructions) as [step, instruction]}
-					<li>
-						<div class="flex text-left mb-3 mt-2 items-center">
-							<div class="mr-3 font-semibold">{step}</div>
-							<div>{instruction[Object.keys(instruction)[0]]}</div>
-						</div>
-					</li>
-				{/each}
+				{#if data.instructions}
+					{#each Object.entries(data.instructions) as [step, instruction]}
+						<li>
+							<div class="flex text-left mb-3 mt-2 items-center">
+								<div class="mr-3 font-semibold">{step}</div>
+								<div>{instruction[Object.keys(instruction)[0]]}</div>
+							</div>
+						</li>
+					{:else}
+						<div>Loading</div>
+					{/each}
+				{/if}
 			</ul>
 		</div>
 	</div>

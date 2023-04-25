@@ -37,7 +37,6 @@ export function saveRecipe(data: string, type: string, lang: string) {
 		let recipe: Recipe = JSON.parse(data);
 		recipe.lang = lang;
 		recipe.type = type;
-		recipe.slug = slugify(recipe.mealname);
 		recipesStore.update((currentRecipes) => {
 			let newState = [recipe, ...currentRecipes];
 			return newState;

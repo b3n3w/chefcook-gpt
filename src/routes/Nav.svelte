@@ -27,7 +27,7 @@
 			on:change={(event) => getLang(event.target.value)}
 		>
 			{#each locales as lang}
-				<option value={lang}>
+				<option class="text-black" value={lang}>
 					{lang}
 				</option>
 			{/each}

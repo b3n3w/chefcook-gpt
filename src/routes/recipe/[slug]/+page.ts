@@ -7,6 +7,6 @@ import { slugify } from '$lib/helpers';
 export const load = (async ({ params }) => {
 	if (params.slug) {
 		const recipes = get<Recipe[]>(recipesStore);
-		return recipes.find((recipe) => slugify(recipe.mealname) == params.slug)
+		return recipes.find((recipe) => slugify(recipe.mealname) == params.slug);
 	}
 }) satisfies PageLoad;

@@ -59,9 +59,13 @@
 		<div class="mt-2 mx-5 my-5">
 			<div class="text-center font-medium sm:font-bold uppercase">{$LL.recipe.ingredients()}</div>
 			<div class="justify-center text-center">
-				{#each data.ingredients as ingredient}
-					<Ingredient bind:ingredient />
-				{/each}
+				{#if data.ingredients}
+					{#each data.ingredients as ingredient}
+						<Ingredient bind:ingredient />
+					{:else}
+						<div>Loading</div>
+					{/each}
+				{/if}
 			</div>
 		</div>
 
@@ -69,14 +73,18 @@
 		<div class="mt-2 mx-9 my-5">
 			<div class="text-center font-medium sm:font-bold uppercase">{$LL.recipe.instructions()}</div>
 			<ul>
-				{#each Object.entries(data.instructions) as [step, instruction]}
-					<li>
-						<div class="flex text-left mb-3 mt-2 items-center">
-							<div class="mr-3 font-semibold">{step}</div>
-							<div>{instruction[Object.keys(instruction)[0]]}</div>
-						</div>
-					</li>
-				{/each}
+				{#if data.instructions}
+					{#each Object.entries(data.instructions) as [step, instruction]}
+						<li>
+							<div class="flex text-left mb-3 mt-2 items-center">
+								<div class="mr-3 font-semibold">{step}</div>
+								<div>{instruction[Object.keys(instruction)[0]]}</div>
+							</div>
+						</li>
+					{:else}
+						<div>Loading</div>
+					{/each}
+				{/if}
 			</ul>
 		</div>
 	</div>

@@ -4,7 +4,7 @@
 	import { browser } from '$app/environment';
 	import Footer from './Footer.svelte';
 	import { setLocale } from '$lib/i18n/i18n-svelte.js';
-	
+
 	export let data;
 
 	if (browser) {

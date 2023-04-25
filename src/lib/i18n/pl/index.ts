@@ -24,7 +24,7 @@ const pl: Translation = {
 			type: 'Wybierz to, co kochasz',
 			main: 'Wybierz swój główny',
 			atHome: 'Co masz w domu?',
-			time: "Ile masz czasu?"
+			time: 'Ile masz czasu?'
 		},
 		types: {
 			vegan: 'Wegański',

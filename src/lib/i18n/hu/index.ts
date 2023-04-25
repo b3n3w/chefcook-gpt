@@ -24,7 +24,7 @@ const hu: Translation = {
 			type: 'Válassza ki, amit szeret',
 			main: 'Válassza ki a főjét',
 			atHome: 'Mi van otthon?',
-			time: "Mennyi időd van ?"
+			time: 'Mennyi időd van ?'
 		},
 		types: {
 			vegan: 'Vegán',

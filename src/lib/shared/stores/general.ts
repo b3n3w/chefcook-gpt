@@ -37,7 +37,7 @@ export function saveRecipe(data: string, type: string, lang: string) {
 		recipe.lang = lang;
 		recipe.type = type;
 		recipesStore.update((currentRecipes) => {
-			let newState = [recipe, ...currentRecipes];
+			const newState = [recipe, ...currentRecipes];
 			return newState;
 		});
 		recipeStore.set(recipe);
@@ -48,7 +48,7 @@ export function saveRecipe(data: string, type: string, lang: string) {
 
 export function removeRecipe(mealname: string) {
 	if (browser) {
-		let stored_recipes: Recipe[] = fromLocalStorage('recipes', []);
+		const stored_recipes: Recipe[] = fromLocalStorage('recipes', []);
 
 		const index = stored_recipes.findIndex((recipe) => recipe.mealname === mealname);
 		if (index !== -1) {

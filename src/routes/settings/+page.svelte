@@ -6,7 +6,7 @@
 	import ThemeSwitch from './ThemeSwitch.svelte';
 
 	let validKey: boolean;
-	let hasApiKey: boolean = false;
+	let hasApiKey = false;
 
 	onMount(() => {
 		if ($apikey) {

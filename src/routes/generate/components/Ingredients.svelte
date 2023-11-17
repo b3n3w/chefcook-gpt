@@ -7,7 +7,7 @@
 	import Recommendation from './Recommendation.svelte';
 
 	export let ingredients: Ingredient[] = [];
-	let recommendations: string[] = [ 'Tofu', 'Zucchini', 'Paprika'];
+	let recommendations: string[] = ['Tofu', 'Zucchini', 'Paprika'];
 
 	let dynamicList: string[] = [];
 	let next: string = '';

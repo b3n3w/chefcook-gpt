@@ -9,6 +9,6 @@ export const POST: RequestHandler = async ({ request }) => {
 	if (!language) {
 		return new Response('No language to translate given', { status: 400 });
 	}
-	let es_lang = await translator.translateObject(transData, translator.languages.English, language);
+	const es_lang = await translator.translateObject(transData, translator.languages.English, language);
 	return new Response(JSON.stringify(es_lang), { status: 200 });
 };

@@ -1,24 +1,28 @@
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 
 export async function fetchRecipe(apikey: string, prompt: string) {
-	const configuration = new Configuration({
-		apiKey: apikey
+
+	const openai = new OpenAI({
+		apiKey: apikey,
+		dangerouslyAllowBrowser: true
 	});
 
-	const openai = new OpenAIApi(configuration);
 	const messages: any = [];
 
 	messages.push({
 		role: 'user',
 		content: prompt
 	});
+
 	try {
-		let completion = await openai.createChatCompletion({
+		let completion = await openai.chat.completions.create({
 			model: 'gpt-3.5-turbo',
 			messages: messages
 		});
-		return { status: 200, content: completion.data.choices[0].message.content };
+		return { status: 200, content: completion.choices[0].message.content };
 	} catch (error: any) {
+		console.log(error);
+		
 		if (error.response) {
 			return { status: error.response.status, content: '' };
 		}
@@ -27,13 +31,15 @@ export async function fetchRecipe(apikey: string, prompt: string) {
 }
 
 export async function validateApiKey(apiKey: string) {
-	const configuration = new Configuration({
-		apiKey: apiKey
-	});
 
-	const openai = new OpenAIApi(configuration);
-	try {
-		await openai.retrieveModel('text-davinci-003');
+	const openai = new OpenAI({
+		apiKey: apiKey,
+		dangerouslyAllowBrowser: true
+		
+	  });
+	try {	
+		console.log(await openai.models.list())
+		await openai.models.list()
 		return 200;
 	} catch (error: any) {
 		if (error.response) {

@@ -4,6 +4,7 @@ import type { Ingredient } from '$lib/interface/Ingredient';
 
 import { writable } from 'svelte/store';
 import { slugify } from '$lib/helpers';
+import { goto } from '$app/navigation';
 
 export function fromLocalStorage(storageKey: string, fallbackValue: any) {
 	if (browser) {
@@ -42,8 +43,8 @@ export function saveRecipe(data: string, type: string, lang: string) {
 			return newState;
 		});
 		recipeStore.set(recipe);
-		toLocalStorage(recipesStore, 'recipes');
-		return recipe;
+		toLocalStorage(recipesStore, 'recipes');	
+		return recipe;	
 	}
 }
 
@@ -65,3 +66,4 @@ export const recipesStore = writable(fromLocalStorage('recipes', []));
 export const recipeStore = writable<Recipe>();
 export const ingredientsStore = writable<Ingredient[]>();
 export const languageStore = writable(fromLocalStorage('lang', ''));
+

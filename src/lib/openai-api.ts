@@ -35,7 +35,6 @@ export async function validateApiKey(apiKey: string) {
 	const openai = new OpenAI({
 		apiKey: apiKey,
 		dangerouslyAllowBrowser: true
-		
 	  });
 	try {	
 		console.log(await openai.models.list())

@@ -13,6 +13,7 @@
 	import LL, { locale } from '$lib/i18n/i18n-svelte';
 	import { getLanguage } from '$lib/i18n/i18n-strings';
 	import TimeSlider from './components/TimeSlider.svelte';
+	import { slugify } from '$lib/helpers';
 
 	let veganSelect = false;
 	let fishSelect = false;
@@ -68,7 +69,8 @@
 
 		generating = false;
 		const recipe = saveRecipe(content, type, $locale);
-		goto(`/recipe/${recipe?.slug}`);
+		let slug = slugify(recipe?.mealname);
+		goto(`/recipe/${slug}`);
 	}
 </script>
 

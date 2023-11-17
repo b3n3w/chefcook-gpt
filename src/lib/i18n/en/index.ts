@@ -38,7 +38,7 @@ const en = {
 		info: {
 			noIngredients: 'No ingredients added',
 			inputPlaceholer: 'Enter to add',
-			time: 'This takes around 15 seconds',
+			time: 'This can take up to 40 seconds',
 			invalidKey: 'Api-Key not valid or not set',
 			processing: 'Processing...'
 		},

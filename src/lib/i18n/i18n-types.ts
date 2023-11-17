@@ -120,7 +120,7 @@ type RootTranslation = {
 			 */
 			inputPlaceholer: string
 			/**
-			 * T​h​i​s​ ​t​a​k​e​s​ ​a​r​o​u​n​d​ ​1​5​ ​s​e​c​o​n​d​s
+			 * T​h​i​s​ ​c​a​n​ ​t​a​k​e​ ​u​p​ ​t​o​ ​4​0​ ​s​e​c​o​n​d​s
 			 */
 			time: string
 			/**
@@ -307,7 +307,7 @@ export type TranslationFunctions = {
 			 */
 			inputPlaceholer: () => LocalizedString
 			/**
-			 * This takes around 15 seconds
+			 * This can take up to 40 seconds
 			 */
 			time: () => LocalizedString
 			/**

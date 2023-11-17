@@ -21,7 +21,7 @@ const de: Translation = {
 	},
 	generate: {
 		headers: {
-			type: 'Welcher Typ bist du ? ',
+			type: 'Wofür stehst du ?',
 			main: 'Auf was hast du Lust ?',
 			atHome: 'Was hast du Zuhause ?',
 			time: 'Wieviel Zeit hast du ?'
@@ -40,7 +40,7 @@ const de: Translation = {
 		info: {
 			noIngredients: 'Keine Zutaten hinzugefügt',
 			inputPlaceholer: 'Hinzufügen',
-			time: 'Dies kann bis zu 15 sekunden dauern',
+			time: 'Lade Rezept - Dies kann bis zu 50 sekunden dauern',
 			invalidKey: 'API-Key nicht gültig oder nicht gesetzt',
 			processing: 'Wird erstellt...'
 		},

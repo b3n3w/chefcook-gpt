@@ -27,7 +27,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="flex flex-wrap space-x-2 sm:space-x-4 justify-center select-none">
 	<div
-		in:fly={{ y: 20, delay: 100 }}
+		in:fly|global={{ y: 20, delay: 100 }}
 		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {vegan
 			? 'border-orange-400 border-3'
 			: ''}"
@@ -41,7 +41,7 @@
 		</div>
 	</div>
 	<div
-		in:fly={{ y: 20, delay: 100 }}
+		in:fly|global={{ y: 20, delay: 100 }}
 		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {veggie
 			? 'border-orange-400 border-3'
 			: ''}"
@@ -55,7 +55,7 @@
 		</div>
 	</div>
 	<div
-		in:fly={{ y: 20, delay: 150 }}
+		in:fly|global={{ y: 20, delay: 150 }}
 		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {fish
 			? 'border-orange-400 border-3'
 			: ''}"
@@ -69,7 +69,7 @@
 		</div>
 	</div>
 	<div
-		in:fly={{ y: 20, delay: 200 }}
+		in:fly|global={{ y: 20, delay: 200 }}
 		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {meat
 			? 'border-orange-400 border-3'
 			: ''}"

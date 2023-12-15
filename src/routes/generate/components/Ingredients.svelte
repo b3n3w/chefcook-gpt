@@ -67,7 +67,7 @@
 <div class="w-1/2 mx-auto flex item-center justify-center flex-col">
 	<div class="flex justify-center sm:px-40 flex-grow">
 		{#each recommendations as ingredient, i}
-			<div in:fly={{ y: -15, delay: (i + 1) * 25 }}>
+			<div in:fly|global={{ y: -15, delay: (i + 1) * 25 }}>
 				<Recommendation
 					bind:ingredient
 					on:addChip={() => {
@@ -97,7 +97,7 @@
 					{#each dynamicList as ingredient, i}
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<li
-							in:fly={{ y: 10, delay: (i + 1) * 60 }}
+							in:fly|global={{ y: 10, delay: (i + 1) * 60 }}
 							class="text-slate-700 py-2 px-4 w-full cursor-pointer hover:bg-orange-400/90 hover:text-white pt-0.5 {i ===
 							0
 								? 'font-semibold text-lg'
@@ -143,7 +143,7 @@
 			</div>
 		{/each}
 		{#if ingredients.length === 0 && did_remove}
-			<div class="text-center" in:fade={{ delay: 600 }}>
+			<div class="text-center" in:fade|global={{ delay: 600 }}>
 				<p class="mt-3">{$LL.generate.info.noIngredients()}</p>
 			</div>
 		{/if}

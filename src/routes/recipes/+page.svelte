@@ -19,7 +19,7 @@
 	{#if $recipesStore.length != 0}
 		{#each $recipesStore as recipe, i}
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div on:click={() => openRecipe(recipe)} in:fly={{ y: 5, delay: (i + 1) * 30 }}>
+			<div on:click={() => openRecipe(recipe)} in:fly|global={{ y: 5, delay: (i + 1) * 30 }}>
 				<RecipeCard
 					bind:mealname={recipe.mealname}
 					bind:estimated_time={recipe.estimated_time}

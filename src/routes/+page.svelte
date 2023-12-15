@@ -8,7 +8,7 @@
 	<div class="flex flex-wrap justify-center mb-5">
 		<img src="vegan_logo.svg" width="80" height="80" alt="background image" />
 	</div>
-	<div in:fade={{ delay: 20 }}>
+	<div in:fade|global={{ delay: 20 }}>
 		<Heading
 			tag="h1"
 			class="mb-3 text-center"

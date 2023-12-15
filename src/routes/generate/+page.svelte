@@ -119,7 +119,7 @@
 					</div>
 				</button>
 			{:else}
-				<div in:fly={{ y: 50 }}>
+				<div in:fly|global={{ y: 50 }}>
 					<button
 						class="bg-gradient-to-r rounded-xl text-white from-yellow-400 to-orange-500 to-90% px-4 py-2 hover:from-orange-500 hover:to-yellow-400"
 						on:click={() => generatePromt()}

@@ -1,77 +1,34 @@
 <script lang="ts">
-	import { validateApiKey } from '$lib/openai-api';
 	import LL from '$lib/i18n/i18n-svelte';
-	import { apikey, toLocalStorage } from '$lib/shared/stores/general';
-	import { onMount } from 'svelte';
+	import { enableMealie } from '$lib/shared/stores/general';
 	import ThemeSwitch from './ThemeSwitch.svelte';
-
-	let validKey: boolean;
-	let hasApiKey = false;
-
-	onMount(() => {
-		if ($apikey) {
-			hasApiKey = true;
-		}
-	});
-
-	async function setApiKey() {
-		let response = await validateApiKey($apikey);
-		if (response == 200) {
-			validKey = true;
-			toLocalStorage(apikey, 'apikey');
-		} else {
-			hasApiKey = false;
-			validKey = false;
-		}
-	}
+	import { PUBLIC_GPT_MODEL } from '$env/static/public';
 </script>
 
 <div class="flex flex-col items-center mt-8">
-	<h2 class="mt-8 mb-2 text-lg font-semibold dark:text-white">{$LL.settings.darkmode.header()}</h2>
+	<h1 class="flex flex-col text-center dark:text-white font-extralight uppercase">
+		<div class="opacity-50">
+			{$LL.settings.model.header()}
+		</div>
+		<div class="text-xl font-light opacity-70">
+			{PUBLIC_GPT_MODEL}
+		</div>
+	</h1>
 
+	<h2 class="mt-8 mb-2 text-lg font-semibold dark:text-white">
+		{$LL.settings.darkmode.header()}
+	</h2>
 	<ThemeSwitch />
-	<div class="m-4" />
-	<h2 class="mt-4 mb-2 text-lg font-semibold dark:text-white">API Key</h2>
-	<p class="dark:text-white text-sm mr-5 ml-5 text-center">
-		{$LL.settings.apiKey.info()}
-		<a class="font-bold underline" href="https://platform.openai.com/overview"> OpenAI Platform</a>
-	</p>
-	<div class="flex justify-between items-center w-full px-5 max-w-sm mt-4">
-		{#if hasApiKey}
-			<input
-				class="border justify-center border-green-500 dark:text-white dark:bg-slate-800 text-sm focus:ring-orange-400 focus:border-orange-400 rounded-xl w-full h-10"
-				type="password"
-				placeholder="Api Key"
-				bind:value={$apikey}
-			/>
-			<button
-				class="ml-2 px-4 py-2 border dark:border-0 rounded-xl bg-slate-400/50 transition ease-in-out text-gray-700 dark:text-white font-medium h-10"
-				type="button"
-				on:click={() => setApiKey()}
-			>
-				Save
-			</button>
-		{:else}
-			<input
-				class="border justify-center border-gray-200 dark:text-white dark:bg-slate-800 text-sm focus:ring-orange-400 focus:border-orange-400 rounded-xl w-full h-10 {!validKey
-					? 'border-red-400'
-					: ''}"
-				type="password"
-				placeholder={validKey ? 'Add API KEY' : $LL.settings.apiKey.invalid()}
-				bind:value={$apikey}
-			/>
-			<button
-				class="ml-2 px-4 py-2 border dark:border-0 rounded-xl bg-slate-400/60 text-gray-700 dark:text-white font-medium h-10 {!validKey
-					? 'bg-red-400'
-					: ''}"
-				type="button"
-				on:click={() => setApiKey()}
-			>
-				{$LL.settings.apiKey.button.save()}
-			</button>
-		{/if}
-	</div>
-	{#if validKey}
-		<div class="text-green-400 text-center text-light">{$LL.settings.apiKey.valid()}</div>
-	{/if}
+</div>
+
+<div class="flex flex-col items-center mt-8">
+	<h2 class="mt-8 mb-2 text-lg font-semibold dark:text-white">
+		{$LL.settings.mealieUpload.header()}
+	</h2>
+	<label class="relative inline-flex items-center cursor-pointer">
+		<input type="checkbox" value="" class="sr-only peer" bind:checked={$enableMealie} />
+		<div
+			class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 dark:peer-focus:ring-orange-300 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-300 peer-checked:bg-orange-300"
+		/>
+	</label>
 </div>

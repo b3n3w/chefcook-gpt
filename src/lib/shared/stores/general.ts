@@ -25,15 +25,14 @@ export function toLocalStorage(store: any, storageKey: string) {
 	if (browser) {
 		store.subscribe((value: any) => {
 			const storageValue = typeof value === 'object' ? JSON.stringify(value) : value;
-
 			window.localStorage.setItem(storageKey, storageValue);
 		});
 	}
 }
 
-export function saveRecipe(data: string, type: string, lang: string) {
+export function saveRecipe(data: any, type: string, lang: string) {
 	if (browser) {
-		const recipe: Recipe = JSON.parse(data);
+		const recipe: Recipe = data
 		recipe.lang = lang;
 		recipe.type = type;
 		recipesStore.update((currentRecipes) => {
@@ -43,6 +42,22 @@ export function saveRecipe(data: string, type: string, lang: string) {
 		recipeStore.set(recipe);
 		toLocalStorage(recipesStore, 'recipes');
 		return recipe;
+	}
+}
+
+export function updateRecipe(updatedRecipe: Recipe) {
+	if (browser) {
+		recipesStore.update((currentRecipes) => {
+
+			const index = currentRecipes.findIndex((recipe) => recipe.mealname === updatedRecipe.mealname);
+			if (index !== -1) {
+				const updatedRecipes = [...currentRecipes];
+				updatedRecipes[index] = { ...updatedRecipes[index], ...updatedRecipe };
+				return updatedRecipes;
+			}
+			return currentRecipes;
+		});
+		toLocalStorage(recipesStore, 'recipes')
 	}
 }
 
@@ -59,8 +74,11 @@ export function removeRecipe(mealname: string) {
 	}
 }
 
-export const apikey = writable(fromLocalStorage('apikey', ''));
 export const recipesStore = writable(fromLocalStorage('recipes', []));
 export const recipeStore = writable<Recipe>();
 export const ingredientsStore = writable<Ingredient[]>();
-export const languageStore = writable(fromLocalStorage('lang', ''));
+export const languageStore = writable(fromLocalStorage('lang', 'de'));
+
+export const sendNotifitications = writable<Boolean>(false);
+
+export const enableMealie = writable<Boolean>(true)

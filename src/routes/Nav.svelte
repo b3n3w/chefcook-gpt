@@ -15,7 +15,7 @@
 <Navbar let:hidden let:toggle>
 	<NavBrand href="/">
 		<span class="self-center whitespace-nowrap text-xl uppercase font-semibold dark:text-white">
-			<span class="font-thin">Recipe</span>GPT
+			<span class="font-thin">Recipe</span>GPT<span class="lowercase text-sm font-light" />
 		</span>
 	</NavBrand>
 	<NavHamburger on:click={toggle} />

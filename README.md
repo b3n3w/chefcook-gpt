@@ -1,4 +1,8 @@
-# Recipe-GPT
+# Private Recipe-GPT
+
+## Difference to main repository ?
+
+This "Fork" is meant to run on a private configured VPS. Its not longer required to insert an OpenAI API-key, as it will come with the server configuration. Also this project will aim to integrate more to other services like e.g. Discord and Mealie. 
 
 ## Why using recipe generator ?
 

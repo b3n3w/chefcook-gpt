@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let time = 0;
+	interface Props {
+		time?: number;
+	}
+
+	let { time = $bindable(0) }: Props = $props();
 </script>
 
 <div class="flex justify-center">

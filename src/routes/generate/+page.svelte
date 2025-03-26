@@ -6,25 +6,27 @@
 	import Mains from './components/Mains.svelte';
 	import Ingredients from './components/Ingredients.svelte';
 
-	import { enableMealie, saveRecipe } from '$lib/shared/stores/general';
-	import { ingredientsStore } from '$lib/shared/stores/general';
+	import { enableMealie } from '$lib/shared/stores/general';
+
 	import { prompts } from '$lib/prompts';
 	import LL, { locale } from '$lib/i18n/i18n-svelte';
 	import { getLanguage } from '$lib/i18n/i18n-strings';
 	import TimeSlider from './components/TimeSlider.svelte';
 	import { slugify } from '$lib/helpers';
+	import { ingredientsState } from '$lib/shared/states.svelte';
+	import { saveRecipe } from '$lib/shared/recipe-storage';
 
-	let veganSelect = false;
-	let fishSelect = false;
-	let meatSelect = false;
-	let veggieSelect = false;
+	let veganSelect = $state(false);
+	let fishSelect = $state(false);
+	let meatSelect = $state(false);
+	let veggieSelect = $state(false);
 
-	let pastaSelect = false;
-	let riceSelect = false;
-	let time = 60;
-	let generating = false;
+	let pastaSelect = $state(false);
+	let riceSelect = $state(false);
+	let time = $state(60);
+	let generating = $state(false);
 
-	let validAPI = true;
+	let validAPI = $state(true);
 
 	async function generatePromt() {
 		generating = true;
@@ -34,18 +36,19 @@
 		let type = meatSelect
 			? 'meat'
 			: veggieSelect
-			? 'veggie'
-			: veganSelect
-			? 'vegan'
-			: fishSelect
-			? 'fish'
-			: 'without';
+				? 'veggie'
+				: veganSelect
+					? 'vegan'
+					: fishSelect
+						? 'fish'
+						: 'without';
 
 		let prompt = prompts.type[type];
 
 		let currentLanguage = getLanguage($locale);
 		let languagePrompt = prompts.language;
-		const ingredientNames = $ingredientsStore.map((ingredient) => ingredient.ingredientName);
+
+		const ingredientNames = ingredientsState.map((ingredient) => ingredient.ingredientName);
 
 		languagePrompt = languagePrompt.replace(/-LANG-/, currentLanguage);
 
@@ -87,12 +90,7 @@
 	<div class="flex flex-wrap justify-center pt-5 sm:pt-10 mb-4 sm:mb-6 font-thin dark:text-white">
 		<p class="uppercase text-lg sm:text-xl">{$LL.generate.headers.type()}</p>
 	</div>
-	<Types
-		bind:vegan={veganSelect}
-		bind:veggie={veggieSelect}
-		bind:fish={fishSelect}
-		bind:meat={meatSelect}
-	/>
+	<Types vegan={veganSelect} veggie={veggieSelect} fish={fishSelect} meat={meatSelect} />
 	<div class="flex flex-wrap justify-center pt-5 sm:pt-10 mb-4 sm:mb-6 dark:text-white">
 		<div class="flex flex-col items-center">
 			<p class="uppercase text-lg sm:text-xl font-thin">{$LL.generate.headers.main()}</p>
@@ -101,15 +99,15 @@
 			</div>
 		</div>
 	</div>
-	<Mains bind:pasta={pastaSelect} bind:rice={riceSelect} />
+	<Mains pasta={pastaSelect} rice={riceSelect} />
 	<div class="flex flex-wrap justify-center pt-5 sm:pt-10 mb-4 sm:mb-4 dark:text-white">
 		<p class="uppercase text-lg sm:text-xl font-thin">{$LL.generate.headers.time()}</p>
 	</div>
-	<TimeSlider bind:time />
+	<TimeSlider {time} />
 	<div class="flex flex-wrap justify-center pt-10 sm:pt-10 mb-4 sm:mb-6 dark:text-white">
 		<p class="uppercase text-lg sm:text-xl font-thin">{$LL.generate.headers.atHome()}</p>
 	</div>
-	<Ingredients bind:ingredients={$ingredientsStore} />
+	<Ingredients ingredients={ingredientsState} />
 
 	<div class="flex-wrap grid justify-center">
 		{#if validAPI}
@@ -121,10 +119,10 @@
 					<div class="flex items-center justify-center">
 						<div
 							class="border-t-transparent border-solid animate-spin rounded-full border-white border-4"
-						/>
+						></div>
 						<div class="ml-2">
 							{$LL.generate.info.processing()}
-							<div />
+							<div></div>
 						</div>
 					</div>
 				</button>
@@ -132,7 +130,7 @@
 				<div in:fly|global={{ y: 50 }}>
 					<button
 						class="bg-gradient-to-r rounded-xl text-white from-yellow-400 to-orange-500 to-90% px-4 py-2 hover:from-orange-500 hover:to-yellow-400"
-						on:click={() => generatePromt()}
+						onclick={() => generatePromt()}
 						>{$LL.common.button()}
 					</button>
 				</div>

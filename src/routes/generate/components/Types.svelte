@@ -14,24 +14,33 @@
 		veggie: { vegan: false, fish: false, meat: false, veggie: true }
 	};
 
-	export let vegan = false;
-	export let fish = false;
-	export let meat = false;
-	export let veggie = false;
+	interface Props {
+		vegan?: boolean;
+		fish?: boolean;
+		meat?: boolean;
+		veggie?: boolean;
+	}
+
+	let {
+		vegan = $bindable(false),
+		fish = $bindable(false),
+		meat = $bindable(false),
+		veggie = $bindable(false)
+	}: Props = $props();
 
 	const toggleOption = (selected: keyof typeof options) => {
 		({ vegan, fish, meat, veggie } = options[selected]);
 	};
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
 <div class="flex flex-wrap space-x-2 sm:space-x-4 justify-center select-none">
 	<div
 		in:fly|global={{ y: 20, delay: 100 }}
 		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {vegan
 			? 'border-orange-400 border-3'
 			: ''}"
-		on:click={() => toggleOption('vegan')}
+		onclick={() => toggleOption('vegan')}
 	>
 		<div class="grid content-center dark:text-white text-center justify-center">
 			<div class="flex justify-center pt-3 pb-3 sm:pb-2">
@@ -45,7 +54,7 @@
 		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {veggie
 			? 'border-orange-400 border-3'
 			: ''}"
-		on:click={() => toggleOption('veggie')}
+		onclick={() => toggleOption('veggie')}
 	>
 		<div class="grid content-center dark:text-white text-center justify-center">
 			<div class="flex justify-center pt-3 pb-3 sm:pb-2">
@@ -59,7 +68,7 @@
 		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {fish
 			? 'border-orange-400 border-3'
 			: ''}"
-		on:click={() => toggleOption('fish')}
+		onclick={() => toggleOption('fish')}
 	>
 		<div class="grid content-center dark:text-white text-center justify-center">
 			<div class="flex justify-center pt-3 pb-3 sm:pb-2">
@@ -73,7 +82,7 @@
 		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {meat
 			? 'border-orange-400 border-3'
 			: ''}"
-		on:click={() => toggleOption('meat')}
+		onclick={() => toggleOption('meat')}
 	>
 		<div class="grid content-center dark:text-white text-center justify-center">
 			<div class="flex justify-center pt-3 pb-3 sm:pb-2">

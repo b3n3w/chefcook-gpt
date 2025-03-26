@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import type { Ingredient } from '$lib/interface/Ingredient';
 	import LL, { locale } from '$lib/i18n/i18n-svelte';
 	import { onMount } from 'svelte';
@@ -6,12 +8,16 @@
 	import { fade, fly } from 'svelte/transition';
 	import Recommendation from './Recommendation.svelte';
 
-	export let ingredients: Ingredient[] = [];
-	let recommendations: string[] = ['Tofu', 'Zucchini', 'Paprika'];
+	interface Props {
+		ingredients?: Ingredient[];
+	}
 
-	let dynamicList: string[] = [];
-	let next = '';
-	let did_remove = true;
+	let { ingredients = $bindable([]) }: Props = $props();
+	let recommendations: string[] = $state(['Tofu', 'Zucchini', 'Paprika']);
+
+	let dynamicList: string[] = $state([]);
+	let next = $state('');
+	let did_remove = $state(true);
 
 	const addFromInput = () => {
 		if (next) ingredients = [...ingredients, { ingredientName: next, quantity: 0 }];
@@ -65,27 +71,29 @@
 </script>
 
 <div class="w-1/2 mx-auto flex item-center justify-center flex-col">
-	<div class="flex justify-center sm:px-40 flex-grow">
-		{#each recommendations as ingredient, i}
-			<div in:fly|global={{ y: -15, delay: (i + 1) * 25 }}>
-				<Recommendation
-					bind:ingredient
-					on:addChip={() => {
-						addFromReccomendation(ingredient, i);
-					}}
-				/>
-			</div>
-		{/each}
-	</div>
-	<hr class="flex h-px  mt-2 mb-4 sm:mx-40 border-0 dark:bg-white/50 bg-gray-700/20" />
+	{#if recommendations}
+		<div class="flex justify-center sm:px-40 flex-grow">
+			{#each recommendations as ingredient, i}
+				<div in:fly|global={{ y: -15, delay: (i + 1) * 25 }}>
+					<Recommendation
+						ingredient={ingredients[i]}
+						on:addChip={() => {
+							addFromReccomendation(ingredient, i);
+						}}
+					/>
+				</div>
+			{/each}
+		</div>
+	{/if}
+	<hr class="flex h-px mt-2 mb-4 sm:mx-40 border-0 dark:bg-white/50 bg-gray-700/20" />
 </div>
 
 <div class="flex-wrap justify-center content-center grid mb-8 dark:text-white">
 	<div class="flex flex-wrap justify-center">
-		<form on:submit|preventDefault={addFromInput}>
+		<form onsubmit={preventDefault(addFromInput)}>
 			<input
 				bind:value={next}
-				on:input={(event) => {
+				oninput={(event) => {
 					fetchIng(event);
 				}}
 				class="border justify-center border-gray-200 dark:text-white dark:bg-slate-800 text-sm focus:ring-orange-400 focus:border-orange-400 rounded-xl"
@@ -95,14 +103,14 @@
 			{#if dynamicList.length > 0}
 				<ul class="z-50 pt-2 rounded-xl w-48 bg-white/90">
 					{#each dynamicList as ingredient, i}
-						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<!-- svelte-ignore a11y_click_events_have_key_events -->
 						<li
 							in:fly|global={{ y: 10, delay: (i + 1) * 60 }}
 							class="text-slate-700 py-2 px-4 w-full cursor-pointer hover:bg-orange-400/90 hover:text-white pt-0.5 {i ===
 							0
 								? 'font-semibold text-lg'
 								: ''}"
-							on:click={addFromList(ingredient)}
+							onclick={addFromList(ingredient)}
 							style="width: 100%; text-align: center;"
 						>
 							{@html ingredient}
@@ -125,7 +133,7 @@
 				<div class="flex-1 py-1" style="display: flex; align-items: center;">
 					<div class="font-bold">{ingredient.ingredientName}</div>
 				</div>
-				<button class="flex-shrink-0 p-1 pr-2" on:click={() => remove(i)}>
+				<button class="flex-shrink-0 p-1 pr-2" onclick={() => remove(i)}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-6 w-6 dark:text-white text-gray-700 hover:text-red-400"

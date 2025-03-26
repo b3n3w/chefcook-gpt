@@ -6,7 +6,7 @@
 
 <div class="grid grid-flow-row auto-rows-max mt-10 justify-center">
 	<div class="flex flex-wrap justify-center mb-5">
-		<img src="vegan_logo.svg" width="80" height="80" alt="background image" />
+		<img src="vegan_logo.svg" width="80" height="80" alt="Vegan Logo" />
 	</div>
 	<div in:fade|global={{ delay: 20 }}>
 		<Heading
@@ -16,7 +16,7 @@
 			>{$LL.landing.header.gen()}</Heading
 		>
 		<div
-			class="bg-gradient-to-r bg-clip-text text-transparent from-yellow-200 text-grad to-orange-500 to-90% mb-3 text-center uppercase font-extrabold md:text-4xl lg:text-3xl"
+			class="bg-gradient-to-r bg-clip-text text-transparent tracking-widest from-yellow-200 text-grad to-orange-500 to-90% mb-3 text-center uppercase font-extrabold md:text-4xl lg:text-3xl"
 		>
 			{$LL.landing.header.recipe()}
 		</div>
@@ -35,7 +35,7 @@
 	<div class="pt-8 flex justify-center">
 		<a href="/generate">
 			<button
-				class="bg-gradient-to-r rounded-xl text-white from-yellow-400 to-orange-500 to-90% px-5 py-3 hover:from-orange-500 hover:to-yellow-400"
+				class="bg-gradient-to-r rounded-xl text-white transition-all ease-in-out duration-150 from-yellow-400 to-orange-500 to-90% px-5 py-3 hover:from-orange-500 hover:to-yellow-400"
 			>
 				{$LL.common.button()}
 			</button>

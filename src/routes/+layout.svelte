@@ -5,7 +5,7 @@
 	import Footer from './Footer.svelte';
 	import { setLocale } from '$lib/i18n/i18n-svelte.js';
 
-	export let data;
+	let { data, children } = $props();
 
 	if (browser) {
 		if (
@@ -23,6 +23,6 @@
 <Nav />
 
 <div style="height: 100vh; overflow-y: auto;">
-	<slot />
+	{@render children?.()}
 </div>
 <Footer />

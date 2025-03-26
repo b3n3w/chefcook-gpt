@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { recipesStore, recipeStore } from '$lib/shared/stores/general';
 	import type { Recipe } from '$lib/interface/Recipe';
+
 	import LL from '$lib/i18n/i18n-svelte';
 
 	import { goto } from '$app/navigation';
 	import RecipeCard from './RecipeCard.svelte';
 	import { fly } from 'svelte/transition';
 	import { slugify } from '$lib/helpers';
+	import { recipesState } from '$lib/shared/states.svelte';
 
 	function openRecipe(recipeSelect: Recipe) {
 		let slug = slugify(recipeSelect.mealname);
@@ -16,16 +17,15 @@
 
 <div class="dark:text-white text-2xl mt-4 font-light text-center">{$LL.recipes.header()}</div>
 <div class="stack-container sm:grid sm:grid-cols-2 sm:gap-4 lg:flex lg:flex-wrap justify-center">
-	{#if $recipesStore.length != 0}
-		{#each $recipesStore as recipe, i}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div on:click={() => openRecipe(recipe)} in:fly|global={{ y: 5, delay: (i + 1) * 30 }}>
+	{#if recipesState.recipies.length != 0}
+		{#each recipesState.recipies as recipe, i}
+			<button onclick={() => openRecipe(recipe)} in:fly|global={{ y: 5, delay: (i + 1) * 30 }}>
 				<RecipeCard
-					bind:mealname={recipe.mealname}
-					bind:estimated_time={recipe.estimated_time}
-					bind:description={recipe.description}
+					mealname={recipe.mealname}
+					estimated_time={recipe.estimated_time}
+					description={recipe.description}
 				/>
-			</div>
+			</button>
 		{/each}
 	{:else}
 		<div class="flex flex-col items-center">

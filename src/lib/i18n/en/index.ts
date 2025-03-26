@@ -52,14 +52,22 @@ const en = {
 	},
 	recipe: {
 		translate: 'Translate',
+		upload: 'Upload to Mealie',
+		openMealieUrl: 'Open in Mealie',
 		ingredients: 'Ingredients',
 		instructions: 'Instructions'
 	},
 	settings: {
+		model: {
+			header: 'This version uses OpenAI Model',
+		},
 		darkmode: {
 			header: 'Darkmode',
 			enabled: 'Disable',
 			disabled: 'Enable'
+		},
+		mealieUpload: {
+			header: 'Automatically upload recipes to mealie'
 		},
 		apiKey: {
 			info: "If you don't have an API-Key yet. Please register at: ",

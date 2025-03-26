@@ -14,7 +14,7 @@
 	let did_remove = true;
 
 	const addFromInput = () => {
-		if (next) ingredients = [...ingredients, { ingredientName: next, count: 0 }];
+		if (next) ingredients = [...ingredients, { ingredientName: next, quantity: 0 }];
 		next = '';
 		dynamicList = [];
 	};
@@ -25,12 +25,12 @@
 	};
 
 	function addFromReccomendation(ingredient: string, index: number) {
-		ingredients = [...ingredients, { ingredientName: ingredient, count: 0 }];
+		ingredients = [...ingredients, { ingredientName: ingredient, quantity: 0 }];
 		recommendations = [...recommendations.slice(0, index), ...recommendations.slice(index + 1)];
 	}
 
 	function addFromList(ingredient: string) {
-		ingredients = [...ingredients, { ingredientName: ingredient, count: 0 }];
+		ingredients = [...ingredients, { ingredientName: ingredient, quantity: 0 }];
 		dynamicList = [];
 		next = '';
 	}
@@ -77,7 +77,7 @@
 			</div>
 		{/each}
 	</div>
-	<hr class="flex h-px mt-2 mb-4 sm:mx-40 border-0 dark:bg-white bg-gray-700/20" />
+	<hr class="flex h-px  mt-2 mb-4 sm:mx-40 border-0 dark:bg-white/50 bg-gray-700/20" />
 </div>
 
 <div class="flex-wrap justify-center content-center grid mb-8 dark:text-white">
@@ -93,7 +93,7 @@
 				placeholder={$LL.generate.info.inputPlaceholer()}
 			/>
 			{#if dynamicList.length > 0}
-				<ul class="absolute z-50 pt-2 rounded-xl w-48 bg-white/90">
+				<ul class="z-50 pt-2 rounded-xl w-48 bg-white/90">
 					{#each dynamicList as ingredient, i}
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<li

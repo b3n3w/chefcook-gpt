@@ -54,14 +54,22 @@ const de: Translation = {
 	},
 	recipe: {
 		translate: 'Übersetzen',
+		upload: 'In Mealie speichern',
+		openMealieUrl: 'In Mealie öffnen',
 		ingredients: 'Zutaten',
 		instructions: 'Zubereitung'
 	},
 	settings: {
+		model: {
+			header: "Diese Version nutzt OpenAI's Model",
+		},
 		darkmode: {
 			header: 'Dunkelmodus',
 			enabled: 'Deaktivieren',
 			disabled: 'Aktivieren'
+		},
+		mealieUpload: {
+			header: 'Rezepte automatisch in Mealie Rezeptbuch einfügen'
 		},
 		apiKey: {
 			info: 'Falls du noch keinen Api-Key besitzt, registriere dich auf: ',

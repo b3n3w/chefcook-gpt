@@ -8,11 +8,6 @@ import { loadedFormatters, loadedLocales, locales } from './i18n-util'
 const localeTranslationLoaders = {
 	de: () => import('./de'),
 	en: () => import('./en'),
-	es: () => import('./es'),
-	hu: () => import('./hu'),
-	it: () => import('./it'),
-	pl: () => import('./pl'),
-	ru: () => import('./ru'),
 }
 
 const updateDictionary = (locale: Locales, dictionary: Partial<Translations>): Translations =>

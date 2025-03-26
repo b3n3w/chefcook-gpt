@@ -6,8 +6,7 @@
 	import Mains from './components/Mains.svelte';
 	import Ingredients from './components/Ingredients.svelte';
 
-	import { fetchRecipe } from '$lib/openai-api';
-	import { apikey, saveRecipe } from '$lib/shared/stores/general';
+	import { enableMealie, saveRecipe } from '$lib/shared/stores/general';
 	import { ingredientsStore } from '$lib/shared/stores/general';
 	import { prompts } from '$lib/prompts';
 	import LL, { locale } from '$lib/i18n/i18n-svelte';
@@ -22,9 +21,7 @@
 
 	let pastaSelect = false;
 	let riceSelect = false;
-
 	let time = 60;
-
 	let generating = false;
 
 	let validAPI = true;
@@ -58,9 +55,17 @@
 		prompt += languagePrompt;
 		prompt += prompts.instructions.replace(/-TIME-/, time.toString());
 
-		const { status, content } = await fetchRecipe($apikey, prompt);
+		const response = await fetch('/api/generate', {
+			method: 'POST',
+			body: JSON.stringify({
+				prompt: prompt,
+				uploadToMealie: $enableMealie
+			})
+		});
 
-		if (status == 200) {
+		const recipeContent = await response.json();
+
+		if (response.status == 200) {
 			validAPI = true;
 		} else {
 			validAPI = false;
@@ -68,8 +73,12 @@
 		}
 
 		generating = false;
-		const recipe = saveRecipe(content, type, $locale);
+		const recipe = saveRecipe(recipeContent, type, $locale);
 		let slug = slugify(recipe?.mealname);
+
+		console.log(slug);
+		console.log(recipe);
+
 		goto(`/recipe/${slug}`);
 	}
 </script>
@@ -101,6 +110,7 @@
 		<p class="uppercase text-lg sm:text-xl font-thin">{$LL.generate.headers.atHome()}</p>
 	</div>
 	<Ingredients bind:ingredients={$ingredientsStore} />
+
 	<div class="flex-wrap grid justify-center">
 		{#if validAPI}
 			{#if generating}

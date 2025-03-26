@@ -8,4 +8,5 @@ export interface Recipe {
 	instructions: [];
 	type: string;
 	lang: string;
+	mealieUrl?: string 
 }

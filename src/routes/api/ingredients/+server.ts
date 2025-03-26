@@ -1,24 +1,26 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import { RAPID_API_KEY } from '$env/static/private';
+// import { RAPID_API_KEY } from '$env/static/private';
 import { ingredients } from './ingredients';
 
-async function fetchExternalIngredients(input: string) {
-	const endpoint = `https://edamam-food-and-grocery-database.p.rapidapi.com/auto-complete?q=${input}`;
-	const options = {
-		method: 'GET',
-		headers: {
-			'X-RapidAPI-Key': RAPID_API_KEY,
-			'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
-		}
-	};
-	const response = await fetch(endpoint, options);
-	const ingredients = await response.json().catch((err) => {
-		return new Response(JSON.stringify({ error: err }), {
-			status: 400
-		});
-	});
-	return new Response(JSON.stringify(ingredients.slice(0, 5)), { status: 200 });
-}
+// Possible implementation to use external Ingredients API from rapid API
+
+// async function fetchExternalIngredients(input: string) {
+// 	const endpoint = `https://edamam-food-and-grocery-database.p.rapidapi.com/auto-complete?q=${input}`;
+// 	const options = {
+// 		method: 'GET',
+// 		headers: {
+// 			'X-RapidAPI-Key': RAPID_API_KEY,
+// 			'X-RapidAPI-Host': 'edamam-food-and-grocery-database.p.rapidapi.com'
+// 		}
+// 	};
+// 	const response = await fetch(endpoint, options);
+// 	const ingredients = await response.json().catch((err) => {
+// 		return new Response(JSON.stringify({ error: err }), {
+// 			status: 400
+// 		});
+// 	});
+// 	return new Response(JSON.stringify(ingredients.slice(0, 5)), { status: 200 });
+// }
 
 export const GET: RequestHandler = async ({ url }) => {
 	const language = url.searchParams.get('lang')?.toLowerCase() || '';

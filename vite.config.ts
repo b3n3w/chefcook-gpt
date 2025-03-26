@@ -8,5 +8,12 @@ export default defineConfig({
 		Icons({
 			compiler: 'svelte'
 		})
-	]
+	],
+	server: {
+		watch: {
+			usePolling: true,
+		},
+		host: true,
+		port: 3000
+	}
 });

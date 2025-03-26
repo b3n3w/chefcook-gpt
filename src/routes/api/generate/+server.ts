@@ -1,6 +1,6 @@
 import OpenAI from 'openai';
 import { error, type RequestHandler } from '@sveltejs/kit';
-import { PRIVATE_DISCORD_TOKEN_URL, PRIVATE_MEALIE_URL, PRIVATE_OPENAI_API_KEY, PRIVATE_MEALIE_UPLOAD_ENABLED } from '$env/static/private';
+import { PRIVATE_DISCORD_TOKEN_URL, PRIVATE_DISCORD_NOTIFICATIONS_ENABLED, PRIVATE_MEALIE_URL, PRIVATE_OPENAI_API_KEY, PRIVATE_MEALIE_UPLOAD_ENABLED } from '$env/static/private';
 import { PUBLIC_GPT_MODEL } from '$env/static/public';
 import type { ChatCompletion } from 'openai/resources';
 
@@ -71,6 +71,11 @@ export const POST: RequestHandler = async ({ request }) => {
 
 
 function sendSuccessNotification(title: string, mealname: string, processing_time: number) {
+
+	const sendNotifitications = PRIVATE_DISCORD_NOTIFICATIONS_ENABLED === 'true';
+	if (!sendNotifitications) {
+		return;
+	}
 	const webhookClient = new WebhookClient({ url: PRIVATE_DISCORD_TOKEN_URL });
 
 	const embed = new EmbedBuilder()

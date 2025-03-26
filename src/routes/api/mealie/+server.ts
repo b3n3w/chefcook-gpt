@@ -14,8 +14,8 @@ export const POST: RequestHandler = async ({ request }) => {
         const mealieUrl = `${PRIVATE_MEALIE_URL}/recipe/${mealieData.slug}`
         return new Response(JSON.stringify({ mealieUrl: mealieUrl }), { status: 200 });
     } else {
-        throw error(400, {
-            message: "Could not upload recipe to Mealie"
-        })
+        error(400, {
+                    message: "Could not upload recipe to Mealie"
+                });
     }
 };

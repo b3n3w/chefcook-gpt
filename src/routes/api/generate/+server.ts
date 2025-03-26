@@ -16,7 +16,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	const { prompt } = data
 
 	if (!prompt) {
-		throw error(400, { message: 'No prompt tramsitted' });
+		error(400, { message: 'No prompt tramsitted' });
 	}
 
 	const openai = new OpenAI({

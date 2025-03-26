@@ -1,4 +1,4 @@
-import { MEALIE_API_TOKEN, MEALIE_URL } from "$env/static/private";
+import { PRIVATE_MEALIE_API_TOKEN, PRIVATE_MEALIE_URL } from "$env/static/private";
 import type { Instruction } from "$lib/interface/MealieRecipe"
 import type { Recipe } from "$lib/interface/Recipe"
 
@@ -6,10 +6,10 @@ async function getParsedIngredients(ingredients: []) {
     try {
         const rawIngredients = ingredients.map(ingredient => `${ingredient.quantity} ${ingredient.ingredientName}`);
 
-        const response = await fetch(`${MEALIE_URL}/api/parser/ingredients`, {
+        const response = await fetch(`${PRIVATE_MEALIE_URL}/api/parser/ingredients`, {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${MEALIE_API_TOKEN}`,
+                Authorization: `Bearer ${PRIVATE_MEALIE_API_TOKEN}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -49,10 +49,10 @@ export const addRecipeToMealie = async (recipe: Recipe) => {
             };
         });
 
-        const response = await fetch(`${MEALIE_URL}/api/recipes`, {
+        const response = await fetch(`${PRIVATE_MEALIE_URL}/api/recipes`, {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${MEALIE_API_TOKEN}`,
+                Authorization: `Bearer ${PRIVATE_MEALIE_API_TOKEN}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ name: recipe.mealname })
@@ -72,10 +72,10 @@ export const addRecipeToMealie = async (recipe: Recipe) => {
                 recipeIngredient: parsedIngredients
             }
 
-            const updateResponse = await fetch(`${MEALIE_URL}/api/recipes/${recipeSlug}`, {
+            const updateResponse = await fetch(`${PRIVATE_MEALIE_URL}/api/recipes/${recipeSlug}`, {
                 method: 'PATCH',
                 headers: {
-                    Authorization: `Bearer ${MEALIE_API_TOKEN}`,
+                    Authorization: `Bearer ${PRIVATE_MEALIE_API_TOKEN}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(recipeData)

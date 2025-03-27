@@ -1,9 +1,9 @@
 <script lang="ts">
 	import '../app.postcss';
-	import Nav from './Nav.svelte';
 	import { browser } from '$app/environment';
 	import Footer from './Footer.svelte';
 	import { setLocale } from '$lib/i18n/i18n-svelte.js';
+	import Navbar from './Navbar.svelte';
 
 	export let data;
 
@@ -20,7 +20,7 @@
 	}
 </script>
 
-<Nav />
+<Navbar />
 
 <div style="height: 100vh; overflow-y: auto;">
 	<slot />

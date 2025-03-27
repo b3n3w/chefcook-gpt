@@ -21,7 +21,7 @@ export type Translations = RootTranslation
 type RootTranslation = {
 	common: {
 		/**
-		 * G​e​n​e​r​a​t​e​ ​o​n​e​!
+		 * G​e​n​e​r​a​t​e
 		 */
 		button: string
 	}
@@ -50,7 +50,7 @@ type RootTranslation = {
 			 */
 			recipe: string
 			/**
-			 * W​i​t​h​ ​A​I
+			 * w​i​t​h​ ​A​I
 			 */
 			ai: string
 		}
@@ -120,7 +120,7 @@ type RootTranslation = {
 			 */
 			inputPlaceholer: string
 			/**
-			 * T​h​i​s​ ​c​a​n​ ​t​a​k​e​ ​u​p​ ​t​o​ ​4​0​ ​s​e​c​o​n​d​s
+			 * T​h​i​s​ ​c​a​n​ ​t​a​k​e​ ​u​p​ ​t​o​ ​2​0​ ​s​e​c​o​n​d​s
 			 */
 			time: string
 			/**
@@ -228,7 +228,7 @@ type RootTranslation = {
 export type TranslationFunctions = {
 	common: {
 		/**
-		 * Generate one!
+		 * Generate
 		 */
 		button: () => LocalizedString
 	}
@@ -257,7 +257,7 @@ export type TranslationFunctions = {
 			 */
 			recipe: () => LocalizedString
 			/**
-			 * With AI
+			 * with AI
 			 */
 			ai: () => LocalizedString
 		}
@@ -327,7 +327,7 @@ export type TranslationFunctions = {
 			 */
 			inputPlaceholer: () => LocalizedString
 			/**
-			 * This can take up to 40 seconds
+			 * This can take up to 20 seconds
 			 */
 			time: () => LocalizedString
 			/**

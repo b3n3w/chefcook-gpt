@@ -47,7 +47,7 @@
 
 <div class="flex justify-center mt-5" in:fly|global={{ y: 100 }}>
 	<div
-		class="bg-white/90 shadow-lg rounded-lg ml-4 mr-4 mb-20 sm:ml-10 sm:mr-10 w-1/2 md:w-2/4 justify-center text-center relative"
+		class="bg-white/90 shadow-lg rounded-lg ml-4 mr-4 mb-20 w-full md:w-3/4 lg:w-2/3 justify-center text-center relative"
 	>
 		<button
 			aria-label="Close"

@@ -20,9 +20,12 @@
 	}
 </script>
 
-<Navbar />
+<div class="bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-700">
+	<Navbar />
 
-<div style="height: 100vh; overflow-y: auto;">
-	<slot />
+	<div class="min-h-screen p-4">
+		<slot />
+	</div>
+
+	<Footer />
 </div>
-<Footer />

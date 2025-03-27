@@ -3,7 +3,6 @@
 	import { locales } from '$lib/i18n/i18n-util';
 	import { loadLocaleAsync } from '$lib/i18n/i18n-util.async';
 	import { toLocalStorage } from '$lib/shared/stores/general';
-	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
 
 	export const getLang = async (selected) => {
 		await loadLocaleAsync(selected);

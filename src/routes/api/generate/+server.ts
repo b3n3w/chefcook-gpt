@@ -63,7 +63,8 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	} catch (error: any) {
 		if (error.response) {
-			return { status: error.response.status, content: '' };
+			console.log(error.response.data.error.message);
+			return new Response(error.response.data.error.message, { status: 400 });
 		}
 	}
 	return new Response('Could not generate recipe', { status: 400 });

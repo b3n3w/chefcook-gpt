@@ -25,10 +25,10 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="flex flex-wrap space-x-2 sm:space-x-4 justify-center select-none">
-	<div
+<div class="flex flex-wrap space-x-4 justify-center select-none">
+	<button
 		in:fly|global={{ y: 20, delay: 100 }}
-		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {vegan
+		class="shadow-sm w-20 h-24 sm:w-32 sm:h-28 rounded-xl hover:-translate-y-1 transition-all duration-150 ease-linear border-2 {vegan
 			? 'border-orange-400 border-3'
 			: ''}"
 		on:click={() => toggleOption('vegan')}
@@ -39,10 +39,10 @@
 			</div>
 			<div class="pb-5 text-lg">{$LL.generate.types.vegan()}</div>
 		</div>
-	</div>
-	<div
+	</button>
+	<button
 		in:fly|global={{ y: 20, delay: 100 }}
-		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {veggie
+		class="shadow-sm w-20 h-24 sm:w-32 sm:h-28 rounded-xl hover:-translate-y-1 transition-all duration-150 ease-linear border-2 {veggie
 			? 'border-orange-400 border-3'
 			: ''}"
 		on:click={() => toggleOption('veggie')}
@@ -53,10 +53,10 @@
 			</div>
 			<div class="pb-2 text-lg">{$LL.generate.types.veggie()}</div>
 		</div>
-	</div>
-	<div
+	</button>
+	<button
 		in:fly|global={{ y: 20, delay: 150 }}
-		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {fish
+		class="shadow-sm w-20 h-24 sm:w-32 sm:h-28 rounded-xl hover:-translate-y-1 transition-all duration-150 ease-linear border-2 {fish
 			? 'border-orange-400 border-3'
 			: ''}"
 		on:click={() => toggleOption('fish')}
@@ -67,10 +67,10 @@
 			</div>
 			<span class="pb-2 text-lg">{$LL.generate.types.fish()}</span>
 		</div>
-	</div>
-	<div
+	</button>
+	<button
 		in:fly|global={{ y: 20, delay: 200 }}
-		class="shadow-sm w-16 h-24 sm:w-32 sm:h-28 rounded-xl hover:shadow-sm hover:shadow-purple-200 border-2 {meat
+		class="shadow-sm w-20 h-24 sm:w-32 sm:h-28 rounded-xl hover:-translate-y-1 transition-all duration-150 ease-linear border-2 {meat
 			? 'border-orange-400 border-3'
 			: ''}"
 		on:click={() => toggleOption('meat')}
@@ -81,5 +81,5 @@
 			</div>
 			<div class="pb-2 text-lg">{$LL.generate.types.meat()}</div>
 		</div>
-	</div>
+	</button>
 </div>

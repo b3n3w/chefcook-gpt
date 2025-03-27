@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
-	import LL, { locale } from "$lib/i18n/i18n-svelte";
-	import type { Recipe } from "$lib/interface/Recipe";
-	import { updateRecipe } from "$lib/shared/stores/general";
+	import { goto } from '$app/navigation';
+	import LL, { locale } from '$lib/i18n/i18n-svelte';
+	import type { Recipe } from '$lib/interface/Recipe';
+	import { updateRecipe } from '$lib/shared/stores/general';
 
-	import Ingredient from "./Ingredient.svelte";
-	import { fly } from "svelte/transition";
+	import Ingredient from './Ingredient.svelte';
+	import { fly } from 'svelte/transition';
 
 	export let data;
 
@@ -16,12 +16,12 @@
 	}
 
 	async function translateRecipe() {
-		const res = await fetch("/api/translate", {
-			method: "POST",
+		const res = await fetch('/api/translate', {
+			method: 'POST',
 			body: JSON.stringify({
 				transData: data,
-				language: $locale,
-			}),
+				language: $locale
+			})
 		});
 
 		let translatedRecipe: Recipe = await res.json();
@@ -29,9 +29,9 @@
 		data = recipe;
 	}
 	async function uploadRecipe() {
-		const res = await fetch("/api/mealie", {
-			method: "POST",
-			body: JSON.stringify({ recipe: data }),
+		const res = await fetch('/api/mealie', {
+			method: 'POST',
+			body: JSON.stringify({ recipe: data })
 		});
 		if (res.status === 200) {
 			const uploadData = await res.json();
@@ -47,11 +47,12 @@
 
 <div class="flex justify-center mt-5" in:fly|global={{ y: 100 }}>
 	<div
-		class="bg-white/90 shadow-lg rounded-lg w-full ml-4 mr-4 mb-20 sm:ml-10 sm:mr-10 sm:w-1/2 justify-center text-center relative"
+		class="bg-white/90 shadow-lg rounded-lg ml-4 mr-4 mb-20 w-full md:w-3/4 lg:w-2/3 justify-center text-center relative"
 	>
 		<button
+			aria-label="Close"
 			class="close-btn absolute top-0 right-0 m-4 focus:outline-none"
-			on:click={() => goto("/recipes")}
+			on:click={() => goto('/recipes')}
 		>
 			<svg
 				class="h-6 w-6 text-gray-500 dark:text-gray-400"
@@ -66,10 +67,7 @@
 			</svg>
 		</button>
 		{#if !isCurrentLanguage()}
-			<button
-				class="text-lg font-semibold pt-2"
-				on:click={translateRecipe}
-			>
+			<button class="text-lg font-semibold pt-2" on:click={translateRecipe}>
 				{$LL.recipe.translate()}
 			</button>
 		{/if}
@@ -81,7 +79,7 @@
 			<div class="flex items-center justify-center">
 				<button
 					class="flex items-center justify-center text-gray-800 font-bold py-2 my-4 rounded"
-					on:click={() => (window.location.href = data.mealieUrl)}
+					on:click={() => goto(data.mealieUrl)}
 				>
 					<svg
 						class="w-6 h-6 mr-2"

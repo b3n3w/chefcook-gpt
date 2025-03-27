@@ -2,7 +2,7 @@ import type { BaseTranslation } from '../i18n-types';
 
 const en = {
 	common: {
-		button: 'Generate one!'
+		button: 'Generate'
 	},
 	nav: {
 		create: 'Create',
@@ -13,7 +13,7 @@ const en = {
 		header: {
 			gen: 'Generate',
 			recipe: 'Your recipe',
-			ai: 'With AI'
+			ai: 'with AI'
 		},
 		idea: 'Food at home but no idea what to cook'
 	},
@@ -38,7 +38,7 @@ const en = {
 		info: {
 			noIngredients: 'No ingredients added',
 			inputPlaceholer: 'Enter to add',
-			time: 'This can take up to 40 seconds',
+			time: 'This can take up to 20 seconds',
 			invalidKey: 'Api-Key not valid or not set',
 			processing: 'Processing...'
 		},

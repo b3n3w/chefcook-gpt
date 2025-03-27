@@ -1,8 +1,4 @@
-# Private Recipe-GPT
-
-## Difference to main repository ?
-
-This "Fork" is meant to run on a private configured VPS. Its not longer required to insert an OpenAI API-key, as it will come with the server configuration. Also this project will aim to integrate more to other services like e.g. Discord and Mealie. 
+# Chefcook-GPT
 
 ## Why using recipe generator ?
 
@@ -10,7 +6,7 @@ Looking for recipe inspiration can be a daunting task, especially when you don't
 
 You want to try it out ?
 
-Check [Demo](https://recipes-gpt.xyz) yourself
+Check [Demo](https://chefcook-gpt.vercel.app) yourself
 
 <img src="demo.gif" alt="Demo Overview" width="500" >
 

@@ -7,23 +7,17 @@
 	import RecipeCard from './RecipeCard.svelte';
 	import { fly } from 'svelte/transition';
 	import { slugify } from '$lib/helpers';
-
-	function openRecipe(recipeSelect: Recipe) {
-		let slug = slugify(recipeSelect.mealname);
-		goto(`/recipe/${slug}`);
-	}
 </script>
 
 <div class="dark:text-white text-2xl mt-4 font-light text-center">{$LL.recipes.header()}</div>
 <div class="stack-container sm:grid sm:grid-cols-2 sm:gap-4 lg:flex lg:flex-wrap justify-center">
 	{#if $recipesStore.length != 0}
 		{#each $recipesStore as recipe, i}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div on:click={() => openRecipe(recipe)} in:fly|global={{ y: 5, delay: (i + 1) * 30 }}>
+			<div in:fly|global={{ y: 5, delay: (i + 1) * 30 }}>
 				<RecipeCard
-					bind:mealname={recipe.mealname}
-					bind:estimated_time={recipe.estimated_time}
-					bind:description={recipe.description}
+					mealname={recipe.mealname}
+					estimated_time={recipe.estimated_time}
+					description={recipe.description}
 				/>
 			</div>
 		{/each}

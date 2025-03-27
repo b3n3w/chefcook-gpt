@@ -9,7 +9,7 @@
 </script>
 
 <button
-	class="center inline-block select-none rounded-xl bg-orange-400 mr-2 py-1.5 px-1.5 align-baseline text-xs font-medium uppercase leading-none text-white"
+	class="center inline-block select-none rounded-xl bg-orange-400 hover:bg-orange-500 transition-colors duration-150 mr-2 py-1.5 px-1.5 align-baseline text-xs font-medium uppercase leading-none text-white"
 	on:click={addRecomendation}
 >
 	{ingredient}

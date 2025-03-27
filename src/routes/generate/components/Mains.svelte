@@ -21,7 +21,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="flex flex-wrap space-x-4 justify-center select-none">
 	<button
-		class="dark:text-white hover:-translate-y-1 transition-all duration-100 ease-linear border-2 w-1/6 md:w-1/12 h-32 rounded-xl {pasta
+		class="dark:text-white hover:-translate-y-1 transition-all duration-100 ease-linear border-2 w-1/4 md:w-1/12 h-32 rounded-xl {pasta
 			? 'border-orange-400 border-3'
 			: ''}"
 		on:click={() => toggleMain('pasta')}
@@ -34,7 +34,7 @@
 		</div>
 	</button>
 	<button
-		class="dark:text-white hover:-translate-y-1 transition-all duration-100 ease-linear border-2 w-1/6 md:w-1/12 h-32 rounded-xl {rice
+		class="dark:text-white hover:-translate-y-1 transition-all duration-100 ease-linear border-2 w-1/4 md:w-1/12 h-32 rounded-xl {rice
 			? 'border-orange-400 border-3'
 			: ''}"
 		on:click={() => toggleMain('rice')}

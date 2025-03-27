@@ -77,7 +77,7 @@
 			</div>
 		{/each}
 	</div>
-	<hr class="flex h-px  mt-2 mb-4 sm:mx-40 border-0 dark:bg-white/50 bg-gray-700/20" />
+	<hr class="flex h-px mt-2 mb-4 sm:mx-40 border-0 dark:bg-white/50 bg-gray-700/20" />
 </div>
 
 <div class="flex-wrap justify-center content-center grid mb-8 dark:text-white">
@@ -88,7 +88,7 @@
 				on:input={(event) => {
 					fetchIng(event);
 				}}
-				class="border justify-center border-gray-200 dark:text-white dark:bg-slate-800 text-sm focus:ring-orange-400 focus:border-orange-400 rounded-xl"
+				class="border p-2 rounded-full justify-center border-gray-200 dark:text-white dark:bg-slate-800 text-sm focus:ring-orange-400 focus:border-orange-400"
 				type="text"
 				placeholder={$LL.generate.info.inputPlaceholer()}
 			/>

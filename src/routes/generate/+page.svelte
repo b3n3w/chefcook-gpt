@@ -34,12 +34,12 @@
 		let type = meatSelect
 			? 'meat'
 			: veggieSelect
-			? 'veggie'
-			: veganSelect
-			? 'vegan'
-			: fishSelect
-			? 'fish'
-			: 'without';
+				? 'veggie'
+				: veganSelect
+					? 'vegan'
+					: fishSelect
+						? 'fish'
+						: 'without';
 
 		let prompt = prompts.type[type];
 
@@ -55,31 +55,31 @@
 		prompt += languagePrompt;
 		prompt += prompts.instructions.replace(/-TIME-/, time.toString());
 
-		const response = await fetch('/api/generate', {
+		const response = await fetch('/generate', {
 			method: 'POST',
 			body: JSON.stringify({
 				prompt: prompt,
 				uploadToMealie: $enableMealie
-			})
+			}),
+			headers: {
+				'Content-Type': 'application/json'
+			}
 		});
 
-		const recipeContent = await response.json();
-
-		if (response.status == 200) {
-			validAPI = true;
-		} else {
+		if (response.status !== 200) {
 			validAPI = false;
+			generating = false;
 			return;
 		}
 
-		generating = false;
-		const recipe = saveRecipe(recipeContent, type, $locale);
-		let slug = slugify(recipe?.mealname);
+		const { recipe } = await response.json();
 
-		console.log(slug);
-		console.log(recipe);
-
+		const newRecipe = saveRecipe(recipe, type, $locale);
+		let slug = slugify(newRecipe?.mealname ?? '');
 		goto(`/recipe/${slug}`);
+
+		validAPI = true;
+		generating = false;
 	}
 </script>
 
@@ -132,9 +132,8 @@
 				<div in:fly|global={{ y: 50 }}>
 					<button
 						class="bg-gradient-to-r rounded-xl text-white from-yellow-400 to-orange-500 to-90% px-4 py-2 hover:from-orange-500 hover:to-yellow-400"
-						on:click={() => generatePromt()}
-						>{$LL.common.button()}
-					</button>
+						on:click={() => generatePromt()}>{$LL.common.button()}</button
+					>
 				</div>
 			{/if}
 		{:else}

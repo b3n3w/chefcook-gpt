@@ -19,6 +19,9 @@ export const POST: RequestHandler = async ({ request }) => {
 		error(400, { message: 'No prompt tramsitted' });
 	}
 
+	console.log(`Generating recipe for`);
+
+
 	const openai = new OpenAI({
 		apiKey: PRIVATE_OPENAI_API_KEY
 	});
@@ -29,6 +32,8 @@ export const POST: RequestHandler = async ({ request }) => {
 		role: 'user',
 		content: prompt
 	});
+
+	console.log("Starting OpenAI request");
 
 	try {
 		const startTime = new Date();
